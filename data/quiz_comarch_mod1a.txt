@@ -85,3 +85,57 @@
 &$O: AND
 &$E: XNOR (Exclusive-NOR) is the opposite of the output of XOR. It outputs 1 if inputs are the same (Equivalence).
 **
+&$T: MC
+&$Q: [Logic Match] What Logic Gate is this?
+&$IMG: assets/images/it2623/i1_and.png
+&$O: OR
+&$O: NAND
+&$O: *AND
+&$O: XOR
+[cite_start]&$E: The AND gate operation is "Logical Multiplication" where the output is 1 only if all inputs are 1[cite: 43, 47].
+**
+&$T: MC
+&$Q: [Logic Match] What Logic Gate is this?
+&$IMG: /assets/images/it2623/i2_or.png
+&$O: AND
+&$O: NAND
+&$O: *OR
+&$O: XOR
+[cite_start]&$E: The OR gate operation is "Logical Addition" where the output is 1 if at least one input is 1[cite: 62, 77].
+**
+&$T: MC
+&$Q: [Logic Match] What Logic Gate is this?
+&$IMG: /assets/images/it2623/i3_nand.png
+&$O: AND
+&$O: *NAND
+&$O: NOT
+&$O: XOR
+&$E: The NAND (Not-AND) gate is an Inverted AND. [cite_start]It outputs 0 only if all inputs are 1; otherwise, it outputs 1[cite: 82, 84].
+**
+&$T: MC
+&$Q: [Logic Match] What Logic Gate is this?
+&$IMG: /assets/images/it2623/i4_nor.png
+&$O: AND
+&$O: NAND
+&$O: *NOR
+&$O: XOR
+&$E: The NOR (Not-OR) gate is an Inverted OR. [cite_start]It outputs 1 only if all inputs are 0; otherwise, it outputs 0[cite: 97, 104].
+**
+&$T: MC
+&$Q: [Logic Match] What Logic Gate is this?
+&$IMG: /assets/images/it2623/i5_xor.png
+&$O: AND
+&$O: NAND
+&$O: NOT
+&$O: *XOR
+&$E: The XOR (Exclusive-OR) gate outputs 1 if the inputs are different (inequality). [cite_start]If inputs are the same, it outputs 0[cite: 127, 135].
+**
+&$T: MC
+&$Q: [Logic Match] What Logic Gate is this?
+&$IMG: /assets/images/it2623/i6_xnor.png
+&$O: AND
+&$O: NAND
+&$O: *XNOR
+&$O: XOR
+&$E: The XNOR (Exclusive-NOR) gate outputs 1 if the inputs are the same (equivalence). [cite_start]It is the opposite of XOR[cite: 139, 140].
+**
