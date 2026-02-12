@@ -1,5 +1,5 @@
 &$NAME: Module 1 Quiz: Digital Logic Gates & Chips
-&$COURSE: Digital Logic
+&$COURSE: IT2623 CArch
 &$DESC: Covers 74XX series chips, logic levels, and gate definitions.
 &$SETTING: show_answers=true
 **

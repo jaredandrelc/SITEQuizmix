@@ -1,5 +1,5 @@
 &$NAME: Module 2 Quiz: Karnaugh Maps (K-Map)
-&$COURSE: Digital Logic
+&$COURSE: IT2623 CArch
 &$DESC: Covers K-Map terminology, grouping rules, and optimization.
 &$SETTING: show_answers=true
 **
