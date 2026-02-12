@@ -1,0 +1,178 @@
+&$NAME: Cisco2 Module 2
+&$COURSE: IT2624 DCN2
+&$DESC: Covers Layer 2 switching, collision/broadcast domains, and frame forwarding logic.
+&$SETTING: show_answers=true
+**
+&$T: MC
+&$Q: Which statement is true about broadcast and collision domains?
+&$O: The size of the collision domain can be reduced by adding hubs to a network.
+&$O: *Adding a switch to a network will increase the size of the broadcast domain.
+&$O: Adding a router to a network will increase the size of the collision domain.
+&$O: The more interfaces a router has the larger the resulting broadcast domain.
+&$E: A switch that receives a broadcast frame will forward the frame out all other interfaces, including interfaces that connect to other switches. These switches will also perform the same forwarding action. By adding more switches to the network, the size of the broadcast domain increases.
+**
+&$T: MC
+&$Q: What is one function of a Layer 2 switch?
+&$O: forwards data based on logical addressing
+&$O: *determines which interface is used to forward a frame based on the destination MAC address
+&$O: duplicates the electrical signal of each frame to every port
+&$O: learns the port assigned to a host by examining the destination MAC address
+&$E: A switch builds a MAC address table of MAC addresses and associated port numbers by examining the source MAC address found in inbound frames. To forward a frame onward, the switch examines the destination MAC address, looks in the MAC address for a port number associated with that destination MAC address, and sends it to the specific port. If the destination MAC address is not in the table, the switch forwards the frame out all ports except the inbound port that originated the frame.
+**
+&$T: MC
+&$Q: What is the significant difference between a hub and a Layer 2 LAN switch?
+&$O: A hub divides collision domains, and a switch divides broadcast domains.
+&$O: Each port of a hub is a collision domain, and each port of a switch is a broadcast domain.
+&$O: *A switch creates many smaller collision domains, and a hub increases the size of a single collision domain.
+&$O: A hub forwards frames, and a switch forwards only packets.
+&$E: Hubs operate only at the physical layer, forwarding bits as wire signals out all ports, and extend the collision domain of a network. Switches forward frames at the data link layer and each switch port is a separate collision domain, and thus more, but smaller, collision domains are created. Switches do not manage broadcast domains because broadcast frames are always forwarded out all active ports.
+**
+&$T: MC
+&$Q: What will a Cisco LAN switch do if it receives an incoming frame and the destination MAC address is not listed in the MAC address table?
+&$O: Send the frame to the default gateway address.
+&$O: Use ARP to resolve the port that is related to the frame.
+&$O: Drop the frame.
+&$O: *Forward the frame out all ports except the port where the frame is received.
+&$E: A LAN switch populates the MAC address table based on source MAC addresses. When a switch receives an incoming frame with a destination MAC address that is not listed in the MAC address table, the switch forwards the frame out all ports except for the ingress port of the frame. When the destination device responds, the switch adds the source MAC address and the port on which it was received to the MAC address table.
+**
+&$T: MC
+&$Q: Which switch characteristic helps alleviate network congestion when a 10 Gbps port is forwarding data to a 1 Gbps port?
+&$O: high port density
+&$O: fast port speed
+&$O: fast internal switching
+&$O: *frame buffering
+&$E: The large frame buffers on a switch hold the ingress traffic until such time that the slower egress port can transmit the data. This reduces the number of dropped frames and alleviates network congestion.
+**
+&$T: MC
+&$Q: Which switching method makes use of the FCS value?
+&$O: broadcast
+&$O: large frame buffer
+&$O: *store-and-forward
+&$O: cut-through
+&$E: The store-and-forward method performs error checking on the frame using the frame-check sequence (FCS) value before sending the frame. The FCS value is the last field in the frame.
+**
+&$T: MC
+&$Q: What does the term “port density” represent for an Ethernet switch?
+&$O: the memory space that is allocated to each switch port
+&$O: *the number of available ports
+&$O: the speed of each port
+&$O: the numbers of hosts that are connected to each switch port
+&$E: The term port density represents the number of ports available in a switch. A one rack unit access switch can have up to 48 ports. Larger switches may support hundreds of ports.
+**
+&$T: MC
+&$Q: Which information does a switch use to keep the MAC address table information current?
+&$O: *the source MAC address and the incoming port
+&$O: the source and destination MAC addresses and the incoming port
+&$O: the source and destination MAC addresses and the outgoing port
+&$O: the destination MAC address and the incoming port
+&$O: the source MAC address and the outgoing port
+&$O: the destination MAC address and the outgoing port
+&$E: To maintain the MAC address table, the switch uses the source MAC address of the incoming packets and the port that the packets enter. The destination address is used to select the outgoing port.
+**
+&$T: CHECK
+&$Q: Which two statements are true about half-duplex and full-duplex communications? (Choose two.)
+&$O: Half duplex has only one channel.
+&$O: *Full duplex increases the effective bandwidth.
+&$O: *Full duplex allows both ends to transmit and receive simultaneously.
+&$O: Full duplex offers 100 percent potential use of the bandwidth.
+&$O: All modern NICS support both half-duplex and full-duplex communication.
+&$E: Full-duplex communication allows both ends to transmit and receive simultaneously, offering 100 percent efficiency in both directions for a 200 percent potential use of stated bandwidth. Half-duplex communication is unidirectional, or one direction at a time. Gigabit Ethernet and 10 Gb/s NICs require full duplex to operate, and do not support half-duplex operation.
+**
+&$T: MC
+&$Q: Which type of address does a switch use to build the MAC address table?
+&$O: source IP address
+&$O: *source MAC address
+&$O: destination MAC address
+&$O: destination IP address
+&$E: When a switch receives a frame with a source MAC address that is not in the MAC address table, the switch will add that MAC address to the table and map that address to a specific port. Switches do not use IP addressing in the MAC address table.
+**
+&$T: MC
+&$Q: Which option correctly describes a switching method?
+&$O: cut-through: makes a forwarding decision after receiving the entire frame
+&$O: cut-through: provides the flexibility to support any mix of Ethernet speeds
+&$O: store-and-forward: forwards the frame immediately after examining its destination MAC address
+&$O: *store-and-forward: ensures that the frame is free of physical and data-link errors
+&$E: Store-and-forward switching performs an error check on an incoming frame after receiving the entire frame on the ingress port. Switches which use this method have the flexibility to support any mix of Ethernet speeds. The cut-through method begins the forwarding process after the destination MAC address of an incoming frame is looked up and the egress port has been determined.
+**
+&$T: MC
+&$Q: Which network device can serve as a boundary to divide a Layer 2 broadcast domain?
+&$O: *router
+&$O: Ethernet hub
+&$O: access point
+&$O: Ethernet bridge
+&$E: Layer 1 and 2 devices (LAN switch and Ethernet hub) and access point devices do not filter MAC broadcast frames. Only a Layer 3 device, such as a router, can divide a Layer 2 broadcast domain.
+**
+&$T: MC
+&$Q: What is the purpose of frame buffers on a switch?
+&$O: They execute checksum values before transmission.
+&$O: They provide temporary storage of the frame checksum.
+&$O: *They hold traffic, thus alleviating network congestion.
+&$O: They provide a basic security scan on received frames.
+&$E: Switches have large frame buffers that allow data waiting to be transmitted to be stored so the data will not be dropped. This feature is beneficial especially if the incoming traffic is from a faster port than the egress port used for transmitting.
+**
+&$T: MC
+&$Q: Which network device can be used to eliminate collisions on an Ethernet network?
+&$O: hub
+&$O: firewall
+&$O: *switch
+&$O: router
+&$E: A switch provides microsegmentation so that no other device competes for the same Ethernet network bandwidth.
+**
+&$T: MC
+&$Q: What criteria is used by a Cisco LAN switch to decide how to forward Ethernet frames?
+&$O: Destination IP address
+&$O: *Destination MAC address
+&$O: Egress port
+&$O: Path cost
+&$E: Cisco LAN switches use the MAC address table to make traffic forwarding decisions. The decisions are based on the ingress port and the destination MAC address of the frame. The ingress port information is important because it carries the VLAN to which the port belongs.
+**
+&$T: CHECK
+&$Q: What are two reasons a network administrator would segment a network with a Layer 2 switch? (Choose two.)
+&$O: To create fewer collision domains
+&$O: To create more broadcast domains
+&$O: To eliminate virtual circuits
+&$O: *To enhance user bandwidth
+&$O: To isolate ARP request messages from the rest of the network
+&$O: *To isolate traffic between segments
+&$E: A switch has the ability to create temporary point-to-point connections between the directly-attached transmitting and receiving network devices. The two devices have full-bandwidth, full-duplex connectivity during the transmission. Segmenting adds collision domains to reduce collisions.
+**
+&$T: MC
+&$Q: A switch has received a frame on an ingress port. What will the switch do if the unicast destination MAC address is in the MAC address table?
+&$O: It will drop the frame.
+&$O: It will forward the frame out all ports.
+&$O: It will forward the frame out all ports except the incoming port.
+&$O: *It will forward the frame out of the specified port in the MAC address table.
+&$E: If the destination MAC address is in the table, it will forward the frame out of the specified port.
+**
+&$T: MC
+&$Q: A switch has received a frame on an ingress port. What will the switch do if the unicast destination MAC address is not in the MAC address table?
+&$O: It will drop the frame.
+&$O: It will forward the frame out all ports.
+&$O: *It will forward the frame out all ports except the incoming port.
+&$O: It will forward the frame out of the specified port in the MAC address table.
+&$E: If the destination MAC address is not in the table, the switch will forward the frame out all ports except the incoming port. This is called an unknown unicast.
+**
+&$T: MC
+&$Q: A switch has received a frame on an ingress port. What will the switch do if the destination MAC address is a broadcast address?
+&$O: It will drop the frame.
+&$O: It will forward the frame out all ports.
+&$O: *It will forward the frame out all ports except the incoming port.
+&$O: It will forward the frame out of the specified port in the MAC address table.
+&$E: If the destination MAC address is a broadcast or a multicast, the frame is also flooded out all ports except the incoming port.
+**
+&$T: MC
+&$Q: Which switching method forwards the frame immediately after examining the destination MAC address?
+&$O: Broadcast
+&$O: *Cut-though
+&$O: Large frame buffer
+&$O: Store-and-forward
+&$E: Cut-through switching has the ability to perform rapid frame switching, which means the switch can make a forwarding decision as soon as it has looked up the destination MAC address of the frame in its MAC address table.
+**
+&$T: MC
+&$Q: Which statement about half-duplex and full-duplex communication is true?
+&$O: Gigabit Ethernet and 10 Gb/s NICs can operate in full-duplex or half-duplex.
+&$O: *Full-duplex communication is bidirectional.
+&$O: Half-duplex communication allows both ends to transmit and receive simultaneously.
+&$O: Half-duplex communication is unidirectional, or one direction at a time.
+&$E: Full-duplex communication allows both ends to transmit and receive simultaneously, offering 100 percent efficiency in both directions for a 200 percent potential use of stated bandwidth. Half-duplex communication is unidirectional, or one direction at a time. Gigabit Ethernet and 10 Gbps NICs require full- duplex to operate and do not support half-duplex operation.
+**

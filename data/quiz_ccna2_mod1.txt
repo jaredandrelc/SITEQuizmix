@@ -1,0 +1,202 @@
+&$NAME: Cisco2 Module 1
+&$COURSE: IT2624 DCN2
+&$DESC: Covers switching, routing, SSH, and basic configuration concepts.
+&$SETTING: show_answers=true
+**
+&$T: CHECK
+&$Q: Which tasks can be accomplished by using the command history feature? (Choose two.)
+&$O: *Set the command history buffer size.
+&$O: *Recall previously entered commands.
+&$O: View a list of commands entered in a previous session.
+&$O: Recall up to 15 command lines by default.
+&$O: Save command lines in a log file for future reference.
+&$E: The history command allows you to view and reuse previously entered commands stored in the buffer. It is also used to manage the size of the buffer.
+**
+&$T: MC
+&$Q: Which statement describes the system LED operation on Cisco Catalyst switches?
+&$O: If the LED is amber, the system is not powered on.
+&$O: If the LED is blinking amber, the switch is performing POST.
+&$O: If the LED is blinking green, the system is operating normally.
+&$O: *If the LED is amber, the system is receiving power but it is not functioning properly.
+&$E: The system LED shows whether the system is receiving power and is functioning properly. If the LED is off, the system is not powered on. If the LED is green, the system is operating normally. If the LED is amber, the system is receiving power but is not functioning properly.
+**
+&$T: MC
+&$Q: What type of Ethernet cable would be used to connect one switch to another switch when neither switch supports the auto-MDIX feature?
+&$O: rollover
+&$O: *crossover
+&$O: straight-through
+&$O: coaxial
+&$E: A straight-through cable can be used to connect a computer or a router to a switch. A rollover cable can be used to access a router or switch console line. A coaxial cable is not used any longer in Ethernet networks, but can be found in video connections. A crossover cable can be used to connect a switch to a switch, a computer to a computer, and a router to a router.
+**
+&$T: MC
+&$Q: What advantage does SSH offer over Telnet?
+&$O: connection-oriented services
+&$O: more connection lines
+&$O: username and password authentication
+&$O: *encryption
+&$E: Both Telnet and SSH are used to remotely connect to a network device for management tasks. However, Telnet uses plaintext communications, whereas SSH provides security for remote connections by providing encryption of all transmitted data between devices.
+**
+&$T: MC
+&$Q: A network administrator has configured VLAN 99 as the management VLAN and has configured it with an IP address and subnet mask. The administrator issues the show interface vlan 99 command and notices that the line protocol is down. Which action can change the state of the line protocol to up?
+&$O: Configure a transport input method on the vty lines.
+&$O: *Connect a host to an interface associated with VLAN 99.
+&$O: Remove all access ports from VLAN 99.
+&$O: Configure a default gateway.
+&$E: Once an SVI is configured with an IP address and subnet mask, it can be used for remote management. An SVI interface will be active when the SVI VLAN has an active port associated with it.
+**
+&$T: MC
+&$Q: Which statement describes SVIs?
+&$O: An SVI can only be created for the management VLAN.
+&$O: *A default SVI is created for VLAN 1 for switch administration.
+&$O: Creating an SVI automatically creates an associated VLAN.
+&$O: An SVI is created automatically for each VLAN on a multilayer switch.
+&$E: To allow for remote switch administration, an SVI is created by default for VLAN 1.
+**
+&$T: MC
+&$Q: Which prompt is displayed when a network administrator successfully accesses the boot loader on a switch to recover from a system crash?
+&$O: switch#
+&$O: system#
+&$O: system:
+&$O: *switch:
+&$E: The boot loader provides access into the switch if the operating system cannot be used because of missing or damaged system files. After some steps have been completed, the boot loader can be accessed through a console connection, through the switch: prompt.
+**
+&$T: MC
+&$Q: Which router bootup sequence is correct?
+&$O: *1 – perform the POST and load the bootstrap program; 2 – locate and load the Cisco IOS software; 3 – locate and load the startup configuration file or enter setup mode
+&$O: 1 – perform the POST and load the startup configuration file; 2 – locate and load the bootstrap program; 3 – locate and load the Cisco IOS software
+&$O: 1 – perform the POST and load the bootstrap program; 2 – locate and load the startup configuration file or enter setup mode; 3 – locate and load the Cisco IOS software
+&$O: 1 – perform the POST and load the Cisco IOS software; 2 – locate and load the startup configuration file or enter setup mode; 3 – locate and load the bootstrap program
+&$E: When a router is powered on, it undergoes a POST to verify that the hardware is functional, after which it proceeds by locating and loading the Cisco IOS software and then loading the startup configuration file if one is present.
+**
+&$T: MC
+&$Q: What is the first action in the boot sequence when a switch is powered on?
+&$O: low-level CPU initialization
+&$O: load boot loader software
+&$O: load the default Cisco IOS software
+&$O: *load a power-on self-test program
+&$E: The first action to take place when a switch is powered on is the POST or power-on self-test. POST performs tests on the CPU, memory, and flash in preparation for loading the boot loader.
+**
+&$T: MC
+&$Q: What must an administrator have in order to reset a lost password on a router?
+&$O: access to another router
+&$O: *physical access to the router
+&$O: a TFTP server
+&$O: a crossover cable
+&$E: Console access to the device through a terminal or terminal emulator software on a PC is required for password recovery.
+**
+&$T: MC
+&$Q: When configuring a switch for SSH access, what other command that is associated with the login local command is required to be entered on the switch?
+&$O: login block-for seconds attempts number within seconds
+&$O: enable secret password
+&$O: *username username secret secret
+&$O: password password
+&$E: The login local command designates that the local username database is used to authenticate interfaces such as console or vty.
+**
+&$T: MC
+&$Q: Which command will provide information about the status of all interfaces including the number of giants, runts, and collisions on the interface?
+&$O: *show interfaces
+&$O: show ip interface brief
+&$O: show history
+&$O: show running-config
+&$E: The show interfaces command is the most comprehensive in providing information about interfaces. The show ip interface brief command does not provide information on giants, runts, or collisions. The show history command provides a history of the commands that are used. The show running-config command will show configuration information, but not status information.
+**
+&$T: MC
+&$Q: Which interface is used by default to manage a Cisco Catalyst 2960 switch?
+&$O: The FastEthernet 0/1 interface
+&$O: The GigabitEthernet 0/1 interface
+&$O: *The VLAN 1 interface
+&$O: The VLAN 99 interface
+&$E: Interface VLAN 1 is the default management SVI.
+**
+&$T: CHECK
+&$Q: A production switch is reloaded and finishes with a Switch> prompt. What two facts can be determined? (Choose two.)
+&$O: *A full version of the Cisco IOS was located and loaded.
+&$O: *POST occurred normally.
+&$O: The boot process was interrupted.
+&$O: There is not enough RAM or flash on this router.
+&$O: The switch did not locate the Cisco IOS in flash, so it defaulted to ROM.
+&$E: The Switch prompt typically occurs after a switch boots normally but does not have or has failed to load a startup configuration file.
+**
+&$T: CHECK
+&$Q: Which two statements are true about using full-duplex Fast Ethernet? (Choose two.)
+&$O: *Full-duplex Fast Ethernet offers 100 percent efficiency in both directions.
+&$O: Latency is reduced because the NIC processes frames faster.
+&$O: Nodes operate in full-duplex with unidirectional data flow.
+&$O: Performance is improved because the NIC is able to detect collisions.
+&$O: *Performance is improved with bidirectional data flow.
+&$E: In full-duplex operation, the NIC does not process frames any faster, the data flow is bidirectional, and there are no collisions.
+**
+&$T: MC
+&$Q: Which statement describes the port speed LED on the Cisco Catalyst 2960 switch?
+&$O: If the LED is amber, the port is operating at 1000 Mbps.
+&$O: If the LED is blinking green, the port is operating at 10 Mbps.
+&$O: *If the LED is green, the port is operating at 100 Mbps.
+&$O: If the LED is off, the port is not operating.
+&$E: The port speed LED indicates that the port speed mode is selected. When selected, the port LEDs will display colors with different meanings. If the LED is off, the port is operating at 10 Mbps. If the LED is green, the port is operating at 100 Mbps. If the LED is blinking green, the port is operating at 1000 Mbps.
+**
+&$T: MC
+&$Q: What is a function of the switch boot loader?
+&$O: To control how much RAM is available to the switch during the boot process
+&$O: *To provide an environment to operate in when the switch operating system cannot be found
+&$O: To provide security for the vulnerable state when the switch is booting
+&$O: To speed up the boot process
+&$E: The switch boot loader environment is presented when the switch cannot locate a valid operating system. The boot loader environment provides a few basic commands that allow a network administrator to reload the operating system or provide an alternate location of the operating system.
+**
+&$T: MC
+&$Q: In which situation would a technician use the show interfaces command?
+&$O: To determine whether remote access is enabled
+&$O: To determine the MAC address of a directly attached network device on a particular interface
+&$O: *When packets are being dropped from a particular directly attached host
+&$O: When an end device can reach local devices, but not remote devices
+&$E: The show interfaces command is useful to detect media errors, to see if packets are being sent and received, and to determine if any runts, giants, CRCs, interface resets, or other errors have occurred. Problems with reachability to a remote network would likely be caused by a misconfigured default gateway or other routing issue, not a switch issue. The show mac address-table command shows the MAC address of a directly attached device.
+**
+&$T: MC
+&$Q: What is one difference between using Telnet or SSH to connect to a network device for management purposes?
+&$O: Telnet does not provide authentication, whereas SSH provides authentication.
+&$O: *Telnet sends a username and password in plain text, whereas SSH encrypts the username and password.
+&$O: Telnet supports a host GUI, whereas SSH supports only a host CLI.
+&$O: Telnet uses UDP as the transport protocol, whereas SSH uses TCP.
+&$E: SSH provides security for remote management connections to a network device. SSH does so through encryption for session authentication (username and password) as well as for data transmission. Telnet sends a username and password in plain text, which can be targeted to obtain the username and password through data capture. Both Telnet and SSH use TCP, support authentication, and connect to hosts in CLI.
+**
+&$T: MC
+&$Q: What is a characteristic of an IPv4 loopback interface on a Cisco IOS router?
+&$O: *It is a logical interface internal to the router.
+&$O: It is assigned to a physical port and can be connected to other devices.
+&$O: Only one loopback interface can be enabled on a router.
+&$O: The no shutdown command is required to place this interface in an up state.
+&$E: The loopback interface is a logical interface internal to the router and is automatically placed in an UP state, as long as the router is functioning. It is not assigned to a physical port and can therefore never be connected to any other device. Multiple loopback interfaces can be enabled on a router.
+**
+&$T: CHECK
+&$Q: What two pieces of information are displayed in the output of the show ip interface brief command? (Choose two.)
+&$O: *Interface descriptions
+&$O: *IPv4 addresses
+&$O: Layer 1 statuses
+&$O: MAC addresses
+&$O: Next-hop addresses
+&$O: Speed and duplex settings
+&$E: The show ip interface brief command displays the IPv4 address of each interface, as well as the operational status of the interfaces at both Layer 1 and Layer 2. In order to see interface descriptions and speed and duplex settings, use the show runningconfig interface command. Next-hop addresses are displayed in the routing table with the show ip route command, and the MAC address of an interface can be seen with the show interfaces command.
+**
+&$T: MC
+&$Q: What type of cable would be used to connect a router to a switch when neither supports the auto-MDIX feature?
+&$O: Coaxial
+&$O: Crossover
+&$O: Rollover
+&$O: *Straight-through
+&$E: When connecting to switches without the autoMDIX feature, straight-through cables must be used to connect to devices such as servers, workstations, or routers. Crossover cables must be used to connect to other switches or repeaters.
+**
+&$T: MC
+&$Q: Which statement regarding a loopback interface is true?
+&$O: *It is an internal virtual interface used for testing purposes.
+&$O: It is used to loop back traffic to an interface.
+&$O: It must be enabled using the no shutdown command.
+&$O: Only one loopback interface can be created on a device.
+&$E: The loopback interface is useful in testing and managing a Cisco IOS device because it ensures that at least one interface will always be available. For example, it can be used for testing purposes, such as testing internal routing processes, by emulating networks behind the router.
+**
+&$T: MC
+&$Q: You are implementing remote access to the VTY lines of a switch using SSH and the login local line vty command. Which other command must be entered to avoid being locked out of the switch?
+&$O: enable secret password
+&$O: password password
+&$O: service-password encryption
+&$O: *username username secret password
+&$E: When authenticating SSH users with the login local command, a username and password pair must be created and added to the local database. Otherwise, authentication would never be successful.
+**

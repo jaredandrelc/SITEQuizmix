@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizmix</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- HEADER -->
+        <header class="top-bar">
+            <div class="header-content">
+                <div class="logo">
+                    <button id="menu-btn" class="hamburger-btn" aria-label="Toggle Menu">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    <img src="assets/images/logo.svg" alt="Quizmix Logo">
+                    <span>Quizmix</span>
+                </div>
+                <div class="score-board hidden" id="score-board">
+                    Score: <span id="score-val">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- START SCREEN (LIBRARY) -->
+        <section id="start-screen" class="screen active dashboard-layout">
+
+            <!-- SIDEBAR (Course Filter) -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h2>Courses</h2>
+                </div>
+                <div id="course-list" class="course-list">
+                    <!-- Dynamic Course Items -->
+                    <div class="course-item active">All Quizzes</div>
+                </div>
+
+                <div class="sidebar-footer">
+                    <div class="github-link-section sidebar-version">
+                        <a href="https://github.com/jaredandrelc/sitequizmix" target="_blank"
+                            class="github-btn compact">
+                            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                                alt="GitHub" class="github-icon" style="width:16px; margin-right:5px;">
+                            Contribute
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <div id="mobile-filters" class="mobile-filters"></div>
+
+            <main class="content-area">
+                <div class="library-header">
+                    <h1>My Library</h1>
+                    <p>Select a quiz to play.</p>
+                </div>
+
+
+
+
+
+                <div id="course-title-display" class="course-section-title">All Quizzes</div>
+
+                <div id="quiz-list" class="quiz-grid">
+                    <!-- Quiz Cards Injected Here -->
+                </div>
+
+                <footer>
+                    <p>Jared Andre Carreon © 2026. All Rights Reserved</p>
+                    <p>UST Society of Information Technology Enthusiasts</p>
+                </footer>
+            </main>
+        </section>
+
+        <!-- QUIZ SCREEN -->
+        <section id="quiz-screen" class="screen">
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <span class="q-type-badge" id="q-type">MULTIPLE CHOICE</span>
+
+                    <div class="q-image-container hidden" id="q-image-container">
+                        <img id="q-image" class="q-image" alt="Question Image">
+                        <button id="view-larger-btn" class="view-larger-btn" title="View Larger">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <polyline points="9 21 3 21 3 15"></polyline>
+                                <line x1="21" y1="3" x2="14" y2="10"></line>
+                                <line x1="3" y1="21" x2="10" y2="14"></line>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <h2 id="q-text">Question text goes here?</h2>
+                </div>
+
+                <div class="interaction-area" id="interaction-area">
+                    <!-- Dynamic Answer Options Injected Here -->
+                </div>
+
+                <div class="feedback-area hidden" id="feedback-area">
+                    <div class="feedback-header" id="feedback-header">
+                        <p id="feedback-msg">Correct!</p>
+                    </div>
+                    <button id="next-btn" class="primary-btn">Next Question</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULT SCREEN -->
+        <section id="result-screen" class="screen">
+            <!-- HERO SECTION (Fixed Size) -->
+            <div class="result-hero-section">
+                <h1>Quiz Completed!</h1>
+                <p id="greeting-msg">Great job!</p>
+
+                <!-- Circular Score Widget -->
+                <div class="score-circle-container">
+                    <svg class="score-circle" width="160" height="160" viewBox="0 0 160 160">
+                        <defs>
+                            <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#8854C0" />
+                                <stop offset="100%" stop-color="#00C985" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="score-bg" cx="80" cy="80" r="70" stroke-width="12" fill="none"></circle>
+                        <circle id="score-progress" class="score-progress" cx="80" cy="80" r="70" stroke-width="12"
+                            fill="none" stroke="url(#scoreGradient)" stroke-linecap="round"></circle>
+                    </svg>
+                    <div class="score-text-center">
+                        <span id="score-percent" class="score-percent-text">100%</span>
+                        <span id="final-score-val" class="score-fraction-text">10/10</span>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <button id="restart-btn" class="primary-btn">Play Again</button>
+                    <button id="library-btn" class="primary-btn">Go back to Library</button>
+                </div>
+            </div>
+
+            <!-- ANSWERS FEED (Independent Flow) -->
+            <div class="result-answers-feed">
+                <div class="summary-header-row">
+                    <h2 class="section-title">Answers</h2>
+                    <div class="summary-controls-segmented">
+                        <button id="view-simple-btn" class="segment-btn active">Simple</button>
+                        <button id="view-detailed-btn" class="segment-btn">Detailed</button>
+                    </div>
+                </div>
+                <div id="quiz-summary" class="summary-list">
+                    <!-- Dynamic Summary Injected Here -->
+                </div>
+            </div>
+
+            <footer>
+                <p>Jared Andre Carreon © 2026. All Rights Reserved</p>
+                <p>UST Society of Information Technology Enthusiasts</p>
+            </footer>
+        </section>
+
+    </div>
+
+    </div>
+
+    <!-- EXIT CONFIRMATION MODAL -->
+    <div id="exit-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3>Exit Quiz?</h3>
+            <p>Your progress will be lost if you leave now.</p>
+            <div class="modal-actions">
+                <button id="modal-stay-btn" class="secondary-btn">Cancel</button>
+                <button id="modal-leave-btn" class="primary-btn danger-btn">Exit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUIZ SPLASH SCREEN MODAL -->
+    <div id="quiz-splash-modal" class="modal-overlay hidden" style="z-index: 2000;">
+        <div class="modal-content splash-content">
+            <div class="splash-header">
+                <span id="splash-course" class="q-type-badge">Course Name</span>
+                <h2 id="splash-title">Quiz Title</h2>
+                <p id="splash-meta" class="splash-meta">10 Questions</p>
+            </div>
+            <div class="splash-body">
+                <p id="splash-desc">Description goes here...</p>
+            </div>
+            <div class="modal-actions splash-actions">
+                <button id="splash-library-btn" class="secondary-btn">Go to Library</button>
+                <button id="splash-play-btn" class="primary-btn">Play Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXPLANATION MODAL -->
+    <div id="explanation-modal" class="modal-overlay hidden">
+        <div class="modal-content explanation-content">
+            <div class="modal-header">
+                <h3>Explanation</h3>
+                <button id="close-explanation-btn" class="close-icon">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="explanation-text"></p>
+            </div>
+            <div class="modal-actions">
+                <button id="close-explanation-action-btn" class="primary-btn">Got it</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="assets/js/audio.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

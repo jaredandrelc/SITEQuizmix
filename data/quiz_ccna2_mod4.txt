@@ -1,0 +1,209 @@
+&$NAME: Cisco2 Module 4
+&$COURSE: IT2624 DCN2
+&$DESC: Covers inter-VLAN routing, router-on-a-stick, and Layer 3 switching.
+&$SETTING: show_answers=true
+**
+&$T: MC
+&$Q: A PC is to access a web server on another network. Which inter-VLAN method will provide the highest bandwidth at Layer 3 and also provide a default gateway for the PC?
+&$O: *multilayer switch with routing enabled
+&$O: router on a stick
+&$O: trunked interface between the router and the switch
+&$O: multiple physical interfaces on the router, all connected to a Layer 2 switch
+&$E: A router-on-a-stick design is the same as having a trunked interface between the router and the switch. This design works, but does not scale well because all VLANs must traverse the one connection between the router and the switch. Multiple physical interfaces on the router would be faster than the router-on-a-stick design, but a router has a limited number of physical interfaces. Layer 3 switches with routing enabled have more Ethernet ports as well as the ability to route.
+**
+&$T: MC
+&$Q: Which scalable method must be implemented in order to provide inter-VLAN routing on a switched network with more than 1000 VLANs?
+&$O: *routing traffic internally to a Layer 3 switch device
+&$O: configuring static routes on a Layer 2 switch device
+&$O: connecting a router interface to a switch port that is configured in trunk mode to route packets between VLANs, with each VLAN assigned to a router subinterface
+&$O: connecting each physical router interface to a different physical switch port, with each switch port assigned to a different VLAN
+&$E: Layer 2 switches are able to perform static routing, but this method is inefficient with a large number of VLANs. Multilayer switching is more scalable than any other inter-VLAN routing implementation, with traffic being routed internally to the switch device. In router-on-a-stick inter-VLAN routing, where a single physical interface routes traffic among multiple VLANs on a network, there is no practical scalability. The legacy inter-VLAN routing is very inefficient and is no longer used in switched networks, because each VLAN requires a physical router interface that is connected to a different physical switch port.
+**
+&$T: MC
+&$Q: When configuring a router as part of a router-on-a-stick inter-VLAN routing topology, where should the IP address be assigned?
+&$O: *to the subinterface
+&$O: to the interface
+&$O: to the SVI
+&$O: to the VLAN
+&$E: The IP address and the encapsulation type should be assigned to each router subinterface in a router-on-a-stick inter-VLAN topology.
+**
+&$T: MC
+&$Q: A small college uses VLAN 10 for the classroom network and VLAN 20 for the office network. What is needed to enable communication between these two VLANs while using legacy inter-VLAN routing?
+&$O: Two groups of switches are needed, each with ports that are configured for one VLAN.
+&$O: *A router with at least two LAN interfaces should be used.
+&$O: A router with one VLAN interface is needed to connect to the SVI on a switch.
+&$O: A switch with a port that is configured as trunk is needed to connect to a router.
+&$E: With legacy inter-VLAN routing, different physical router interfaces are connected to different physical switch ports. The switch ports that connect to the router are in access mode, each belonging to a different VLAN. Switches can have ports that are assigned to different VLANs, but communication between VLANs requires routing function from the router.
+**
+&$T: MC
+&$Q: What is a disadvantage of using multilayer switches for inter-VLAN routing?
+&$O: *Multilayer switches are more expensive than router-on-a-stick implementations.
+&$O: Multilayer switches have higher latency for Layer 3 routing.
+&$O: Spanning tree must be disabled in order to implement routing on a multilayer switch.
+&$O: Multilayer switches are limited to using trunk links for Layer 3 routing.
+&$E: The main disadvantage of the multilayer switches is their higher cost. Because both routing and switching are done in hardware, multilayer switches are faster than router-on-a-stick.
+**
+&$T: MC
+&$Q: Which type of inter-VLAN communication design requires the configuration of multiple subinterfaces?
+&$O: *router on a stick
+&$O: routing for the management VLAN
+&$O: routing via a multilayer switch
+&$O: legacy inter-VLAN routing
+&$E: The router-on-a-stick design always includes subinterfaces on a router. When a multilayer switch is used, multiple SVIs are created. When the number of VLANs equals the number of ports on a router, or when the management VLAN needs to be routed, any of the inter-VLAN design methods can be used.
+**
+&$T: MC
+&$Q: What is a disadvantage of using router-on-a-stick inter-VLAN routing?
+&$O: *does not scale well beyond 50 VLANs
+&$O: requires the use of more physical interfaces than legacy inter-VLAN routing
+&$O: requires the use of multiple router interfaces configured to operate as access links
+&$O: does not support VLAN-tagged packets
+&$E: Router-on-a-stick inter-VLAN routing does not scale beyond 50 VLANs. The router can receive VLAN-tagged packets and send VLAN-tagged packets to a destination. Router-on-a-stick inter-VLAN routing can utilize a single router interface as a trunk link to receive and forward VLAN traffic and does not require multiple interfaces.
+**
+&$T: MC
+&$Q: What is the meaning of the number 10 in the encapsulation dot1Q 10 native router subinterface command?
+&$O: the subinterface number
+&$O: the interface number
+&$O: *the VLAN ID
+&$O: the subnet number
+&$E: The administrator can use the encapsulation command to specify the encapsulation type (IEEE 802.1Q or ISL), the VLAN ID, and optionally the native VLAN.
+**
+&$T: MC
+&$Q: While configuring inter-VLAN routing on a multilayer switch, a network administrator issues the no switchport command on an interface that is connected to another switch. What is the purpose of this command?
+&$O: to create a switched virtual interface
+&$O: *to create a routed port for a single network
+&$O: to provide a static trunk link
+&$O: to provide an access link that tags VLAN traffic
+&$E: When a Layer 2 interface on a multilayer switch is configured with the no switchport command, it becomes a routed port. A routed port is configured with an IP address for a specific subnet.
+**
+&$T: MC
+&$Q: A network administrator enters the following command sequence on a Cisco 3560 switch. What is the purpose of these commands? Switch(config)# interface gigabitethernet 0/1 Switch(config-if)# no switchport
+&$O: to enable the Gi0/1 port as a switch virtual interface
+&$O: to enable the Gi0/1 port as a bridge virtual interface
+&$O: *to make the Gi0/1 port a routed port
+&$O: to shut down the Gi0/1 port
+&$E: By default, the physical ports on a 3560 switch are Layer 2 interfaces. To make them routed ports, the interface command no switchport should be used. The other options do not describe the purpose of this command.
+**
+&$T: MC
+&$Q: What operational mode should be used on a switch port to connect it to a router for router-on-a-stick inter-VLAN routing?
+&$O: dynamic auto
+&$O: *trunk
+&$O: access
+&$O: dynamic desirable
+&$E: Routers do not support Dynamic Trunking Protocol, and access mode is used to connect hosts.
+**
+&$T: MC
+&$Q: Which sentence correctly describes the SVI inter-VLAN routing method?
+&$O: Subinterfaces have to be created.
+&$O: A physical interface is needed for every VLAN that is created.
+&$O: *An SVI is needed for each VLAN.
+&$O: The encapsulation type must be configured on the SVI.
+&$E: In order to create SVI inter-VLAN routing on a Layer 3 switch, the VLAN must exist in the database and the SVI must be explicitly created. The only exception is VLAN1, which is created by default.
+**
+&$T: MC
+&$Q: How is traffic routed between multiple VLANs on a multilayer switch?
+&$O: *Traffic is routed via internal VLAN interfaces.
+&$O: Traffic is routed via subinterfaces.
+&$O: Traffic is routed via physical interfaces.
+&$O: Traffic is broadcast out all physical interfaces.
+&$E: Multilayer switches can perform inter-VLAN routing by the use of internal VLAN interfaces. External physical interfaces can receive traffic but are not necessary for routing functions. When routing between VLANs, any broadcast traffic that is received on a VLAN would remain on ports that are members of that VLAN. Subinterfaces are not usable for inter-VLAN routing on multilayer switches.
+**
+&$T: MC
+&$Q: What is required to perform router-on-a-stick inter-VLAN routing?
+&$O: a multilayer switch
+&$O: *a router that is configured with multiple subinterfaces
+&$O: a router with multiple physical interfaces
+&$O: a Layer 2 switch that is configured with multiple trunk ports
+&$E: With router-on-a-stick inter-VLAN routing, a single physical router interface is used to route packets between multiple VLANs if the interface is configured with multiple subinterfaces. A separate subinterface is needed for each VLAN that will be routed. Because the router is performing all routing functions, a multilayer switch is not required.
+**
+&$T: CHECK
+&$Q: An administrator was troubleshooting a router-on-a-stick topology and concluded that the problem was related to the configuration of VLANs on the router subinterfaces. Which two commands can the administrator use in the router to identify the problem? (Choose two.)
+&$O: *show ip interface
+&$O: show ip protocols
+&$O: show controllers
+&$O: *show running-config
+&$O: show vlan
+&$E: The show ip interface and show running-config commands can be useful in troubleshooting routing issues like wrong VLAN IDs that are assigned to subinterfaces. The show controllers and show ip protocols commands do not display any information about VLANs. The show vlan command is not useful to show information about the router subinterfaces.
+**
+&$T: MC
+&$Q: A router has two FastEthernet interfaces and needs to connect to four VLANs in the local network. How can this be accomplished using the fewest number of physical interfaces without unnecessarily decreasing network performance?
+&$O: Add a second router to handle the inter-VLAN traffic.
+&$O: *Implement a router-on-a-stick configuration.
+&$O: Interconnect the VLANs via the two additional FastEthernet interfaces.
+&$O: Use a hub to connect the four VLANS with a FastEthernet interface on the router.
+&$E: Using legacy inter-VLAN routing to interconnect four VLANs would require four separate physical interfaces. Therefore, the best router-based solution is to configure a router-on-a-stick.
+**
+&$T: MC
+&$Q: What distinguishes traditional legacy inter-VLAN routing from router-on-a-stick?
+&$O: Traditional routing is able to use only a single switch interface, whereas a router-on-a-stick can use multiple switch interfaces.
+&$O: Traditional routing requires a routing protocol, whereas a router-on-a-stick only needs to route directly connected networks.
+&$O: *Traditional routing uses one port per logical network, whereas a router-on-a-stick uses subinterfaces to connect multiple logical networks to a single router port.
+&$O: Traditional routing uses multiple paths to the router and therefore requires STP, whereas router-on-a-stick does not provide multiple connections and therefore eliminates the need for STP.
+&$E: Router-on-a-stick requires one interface configured as subinterfaces for each VLAN.
+**
+&$T: MC
+&$Q: Subinterface G0/1.10 on R1 must be configured as the default gateway for the VLAN 10 192.168.10.0/24 network. Which command should be configured on the subinterface to enable inter-VLAN routing for VLAN 10?
+&$O: *encapsulation dot1q 10
+&$O: encapsulation vlan 10
+&$O: switchport mode access
+&$O: switchport mode trunk
+&$E: The subinterface must be assigned to VLAN 10 using the encapsulation dot1q 10 command. The encapsulation vlan 10 option is not a valid command and the switchport mode options are switch configuration commands.
+**
+&$T: MC
+&$Q: What is important to consider while configuring the subinterfaces of a router when implementing inter-VLAN routing?
+&$O: *The IP address of each subinterface must be the default gateway address for each VLAN subnet.
+&$O: The no shutdown command must be given on each subinterface.
+&$O: The physical interface must have an IP address configured.
+&$O: The subinterface numbers must match the VLAN ID number.
+&$E: host must have a default gateway configured. Hosts on VLANs must have their default gateway configured on a router subinterface to provide inter-VLAN routing services.
+**
+&$T: MC
+&$Q: What are the steps that must be completed in order to enable inter-VLAN routing using router-on-a-stick?
+&$O: Configure the physical interfaces on the router and enable a routing protocol.
+&$O: Create the VLANs on the router and define the port membership assignments on the switch.
+&$O: Create the VLANs on the switch to include port membership assignment and enable a routing protocol on the router.
+&$O: *Create the VLANs on the switch to include port membership assignment and configure subinterfaces on the router matching the VLANs.
+&$E: The switch port must be configured as a trunk, and the VLANs on the switch must have users connected to them.
+**
+&$T: CHECK
+&$Q: What two statements are true regarding the use of subinterfaces for inter-VLAN routing? (Choose two.)
+&$O: *Fewer router Ethernet ports required than in traditional inter-VLAN routing
+&$O: *Less complex physical connection than in traditional inter-VLAN routing
+&$O: More switch ports required than in traditional inter-VLAN routing
+&$O: Simpler Layer 3 troubleshooting than with traditional inter-VLAN routing
+&$O: Subinterfaces have no contention for bandwidth
+&$E: Legacy (traditional) inter-VLAN routing would require more ports, and the configuration can be more complex than a router-on-a-stick solution.
+**
+&$T: MC
+&$Q: Which router-on-a-stick command and prompt on R1 correctly encapsulates 802.1Q traffic for VLAN 20?
+&$O: R1(config-if)# encapsulation 802.1q 20
+&$O: R1(config-if)# encapsulation dot1q 20
+&$O: R1(config-subif)# encapsulation 802.1q 20
+&$O: *R1(config-subif)# encapsulation dot1q 20
+&$E: The encapsulation dot1q vlan_id [native] command configures the subinterface to respond to 802.1Q encapsulated traffic from the specified vlan-id. The native keyword option is only appended to set the native VLAN to something other than VLAN 1.
+**
+&$T: CHECK
+&$Q: What are two disadvantages of using the router-on-a-stick inter-VLAN routing method in a large network? (Choose two.)
+&$O: *A dedicated router is required.
+&$O: *It does not scale well.
+&$O: It requires multiple physical interfaces on a router.
+&$O: It requires subinterfaces to be configured on the same subnets.
+&$O: Multiple SVIs are needed.
+&$E: The router-on-a-stick method requires one physical Ethernet router interface to route traffic between multiple VLANs on a network. The router interface is configured using software-based virtual subinterfaces to identify routable VLANs. Modern, enterprise networks rarely use router-on-a-stick because it does not scale easily to meet requirements, and multiple subinterfaces may impact the traffic flow speed. In these very large networks, network administrators use Layer 3 switches to configure inter-VLAN routing.
+**
+&$T: CHECK
+&$Q: What is a characteristic of a routed port on a Layer 3 switch? (Choose two.)
+&$O: *It requires the switchport mode access interface config command.
+&$O: *It requires the no switchport interface config command.
+&$O: It requires the switchport access vlan vlan-id interface config command.
+&$O: It supports trunking.
+&$E: A routed port is created on a Layer 3 switch by disabling the switchport feature on a Layer 2 port using the no switchport interface configuration command. Then the interface can be configured with an IPv4 configuration to connect to a router or another Layer 3 switch. Only Layer 2 ports can be assigned to a VLAN or support trunking.
+**
+&$T: CHECK
+&$Q: What are two advantages of using a Layer 3 switch with SVIs for inter-VLAN routing? (Choose two.)
+&$O: *A router is not required.
+&$O: *It switches packets faster than using the router-on-a-stick method.
+&$O: SVIs can be bundled into EtherChannels.
+&$O: SVIs can be divided using subinterfaces.
+&$O: SVIs eliminate the need for a default gateway in the hosts.
+&$E: Modern, enterprise networks rarely implement inter-VLAN routing using the router-on-a-stick method. Instead, they use faster Layer 3 switches because they use hardware-based switching to achieve higher-packet processing rates than routers. Layer 3 switches provide a much more scalable method to provide inter-VLAN routing.
+**

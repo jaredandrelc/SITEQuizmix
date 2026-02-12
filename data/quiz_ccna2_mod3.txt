@@ -1,0 +1,206 @@
+&$NAME: Cisco2 Module 3
+&$COURSE: IT2624 DCN2
+&$DESC: Covers switching, routing, SSH, and basic configuration concepts.
+&$SETTING: show_answers=true
+**
+&$T: MC
+&$Q: What happens to a port that is associated with VLAN 10 when the administrator deletes VLAN 10 from the switch?
+&$O: The port creates the VLAN again.
+&$O: The port goes back to the default VLAN.
+&$O: The port automatically associates itself with the native VLAN.
+&$O: *The port becomes inactive.
+&$E: If the VLAN that is associated with a port is deleted, the port becomes inactive and cannot communicate with the network any more. To verify that a port is in an inactive state, use the show interfaces switchport command.
+**
+&$T: MC
+&$Q: In which memory location are the VLAN configurations of normal range VLANs stored on a Catalyst switch?
+&$O: *flash
+&$O: ROM
+&$O: RAM
+&$O: NVRAM
+&$E: When a normal range VLAN is created the configuration information of the VLAN is stored in flash in the vlan.dat file.
+**
+&$T: MC
+&$Q: An administrator is investigating a failure on a trunk link between a Cisco switch and a switch from another vendor. After a few show commands, the administrator notices that the switches are not negotiating a trunk. What is a probable cause for this issue?
+&$O: Both switches are in nonegotiate mode.
+&$O: *Switches from other vendors do not support DTP.
+&$O: Both switches are in trunk mode.
+&$O: DTP frames are flooding the entire network.
+&$E: DTP is a Cisco proprietary protocol. Non-Cisco switches do not support DTP.
+**
+&$T: MC
+&$Q: What is the purpose of the vlan.dat file on a switch?
+&$O: *It holds the VLAN database.
+&$O: It holds the running configuration.
+&$O: It holds the operating system.
+&$O: It holds the saved configuration.
+&$E: The VLAN database (vlan.dat) contains information about normal range VLANs such as the VLAN number, name, and VTP mode.
+**
+&$T: MC
+&$Q: What is the purpose of setting the native VLAN separate from data VLANs?
+&$O: *A separate VLAN should be used to carry uncommon untagged frames to avoid bandwidth contention on data VLANS.
+&$O: The security of management frames that are carried in the native VLAN can be enhanced.
+&$O: The native VLAN is for carrying VLAN mnanagement traffic only.
+&$O: The native VLAN is for routers and switches to exchange their management information, so it should be different from data VLANS.
+&$E: When a Cisco switch trunk port receives untagged frames (unusual in well-designed networks), it forwards these frames to the native VLAN. When the native VLAN is moved away from data VLANs, those untagged frames will not compete for bandwidth in the data VLANs. The native VLAN is not designed for carrying management traffic, but rather it is for backward compatibility with legacy LAN scenarios.
+**
+&$T: MC
+&$Q: When a Cisco switch receives untagged frames on a 802.1Q trunk port, which VLAN ID is the traffic switched to by default?
+&$O: management VLAN ID
+&$O: data VLAN ID
+&$O: *native VLAN ID
+&$O: unused VLAN ID
+&$E: A native VLAN is used to forward untagged frames that are received on a Cisco switch 802.1Q trunk port. Untagged frames that are received on a trunk port are not forwarded to any other VLAN except the native VLAN.
+**
+&$T: CHECK
+&$Q: A network administrator is determining the best placement of VLAN trunk links. Which two types of point-to-point connections utilize VLAN trunking? (Choose two.)
+&$O: *between two switches that utilize multiple VLANs
+&$O: *between a switch and a server that has an 802.1Q NIC
+&$O: between a switch and a network printer
+&$O: between two switches that share a common VLAN
+&$O: between a switch and a client PC
+&$E: VLAN trunk links are used to allow all VLAN traffic to propagate between devices such as the link between a switch and a server that has an 802.1Q-capable NIC. Switches can also utilize trunk links to routers, servers, and to other switches.
+**
+&$T: CHECK
+&$Q: What are three primary benefits of using VLANs? (Choose three.)
+&$O: *security
+&$O: a reduction in the number of trunk links
+&$O: *cost reduction
+&$O: end user satisfaction
+&$O: *improved IT staff efficiency
+&$O: no required configuration
+&$E: Security, cost reduction, and improved IT staff efficiency are all benefits of using VLANs, along with higher performance, broadcast storm mitigation, and simpler project and application management. End users are not usually aware of VLANs, and VLANs do require configuration. Because VLANs are assigned to access ports, they do not reduce the number of trunk links.
+**
+&$T: MC
+&$Q: On a Cisco switch, where is extended range VLAN information stored?
+&$O: *running configuration file
+&$O: NVRAM
+&$O: flash
+&$O: startup configuration file
+&$E: Extended range VLANs, 1006 through 4094, are not written to the vlan.dat file but are saved in the running configuration file.
+**
+&$T: MC
+&$Q: In which location are the normal range VLANs stored on a Cisco switch by default?
+&$O: RAM
+&$O: *flash memory
+&$O: startup-config
+&$O: running-config
+&$E: Normal range VLANs are stored in a file called vlan.dat and located in the flash memory.
+**
+&$T: MC
+&$Q: Which distinct type of VLAN is used by an administrator to access and configure a switch?
+&$O: data VLAN
+&$O: default VLAN
+&$O: native VLAN
+&$O: *management VLAN
+&$E: A management VLAN is used to remotely access and configure a switch. Data VLANs are used to separate a network into groups of users or devices. The default VLAN is the initial VLAN all switch ports are placed in when loading the default configuration on a switch. The 802.1Q trunk port places untagged traffic on the native VLAN.
+**
+&$T: MC
+&$Q: For what reason would a network administrator use the show interfaces trunk command on a switch?
+&$O: *to view the native VLAN
+&$O: to examine DTP negotiation as it occurs
+&$O: to display an IP address for any existing VLAN
+&$O: to verify port association with a particular VLAN
+&$E: The show interfaces trunk command displays the ports that are trunk ports, the trunking mode, the encapsulation type, the trunk status, the native VLAN, and the allowed VLANs on the link.
+**
+&$T: MC
+&$Q: Where is the vlan.dat file stored on a switch?
+&$O: in NVRAM
+&$O: *in flash memory
+&$O: in RAM
+&$O: on the externally attached storage media or internal hard drive
+&$E: Normal range VLAN configurations are stored within a VLAN database file, called vlan.dat, which is located in the flash memory of the switch.
+**
+&$T: MC
+&$Q: If an organization is changing to include Cisco IP phones in its network, what design feature must be considered to ensure voice quality?
+&$O: Voice traffic needs to be tagged with the native VLAN.
+&$O: *A separate VLAN is needed for voice traffic.
+&$O: Voice traffic and data traffic require separate trunk links between switches.
+&$O: Additional switch ports that are dedicated to Cisco IP phones are required.
+&$E: A PC commonly connects to an IP phone and the IP phone, in turn, connects to a switch. The phone does not require a separate port. Because voice traffic cannot tolerate much packet delay, it needs to be in a separate VLAN. The voice VLAN can be configured to provide quality of service (QoS), which will ensure that the voice traffic has a higher priority than data traffic.
+**
+&$T: MC
+&$Q: A Cisco switch currently allows traffic tagged with VLANs 10 and 20 across trunk port Fa0/5. What is the effect of issuing a switchport trunk allowed vlan 30 command on Fa0/5?
+&$O: It allows a native VLAN of 30 to be implemented on Fa0/5.
+&$O: It allows VLANs 10, 20, and 30 on Fa0/5.
+&$O: *It allows only VLAN 30 on Fa0/5.
+&$O: It allows VLANs 1 to 30 on Fa0/5.
+&$E: The switchport trunk allowed vlan 30 command allows traffic that is tagged with VLAN 30 across the trunk port. Any VLAN that is not specified in this command will not be allowed on this trunk port.
+**
+&$T: CHECK
+&$Q: Which three statements accurately describe VLAN types? (Choose three).
+&$O: A data VLAN is used to carry VLAN management data and user-generated traffic.
+&$O: *A management VLAN is any VLAN that is configured to access management features of the switch.
+&$O: *After the initial boot of an unconfigured switch, all ports are members of the default VLAN.
+&$O: *An 802.1Q trunk port, with a native VLAN assigned, supports both tagged and untagged traffic.
+&$O: Voice VLANs are used to support user phone and email traffic on a network.
+&$O: VLAN 1 is always used as the management VLAN.
+&$E: A management VLAN is a VLAN that is configured to manage features of the switch. By default, all ports are members of the default VLAN. An 802.1Q trunk port supports both tagged and untagged traffic.
+**
+&$T: MC
+&$Q: Which type of VLAN is used to designate which traffic is untagged when crossing a trunk port?
+&$O: Data
+&$O: Default
+&$O: *Native
+&$O: Management
+&$O: VLAN 1
+&$E: A native VLAN is the VLAN that does not receive a VLAN tag in the IEEE 802.1Q frame header. Cisco best practices recommend the use of an unused VLAN (not a data VLAN, the default VLAN of VLAN 1, or the management VLAN) as the native VLAN whenever possible.
+**
+&$T: CHECK
+&$Q: What are two primary benefits of using VLANs? (Choose two.)
+&$O: A reduction in the number of trunk links
+&$O: *Cost reduction
+&$O: *Improved IT staff efficiency
+&$O: No required configuration
+&$O: Reduced security
+&$E: Cost reduction and improved IT staff efficiency are all benefits of using VLANs, along with higher performance, broadcast storm mitigation, and simpler project and application management. End users are not usually aware of VLANs, and VLANs do require configuration. Because VLANs are assigned to access ports, they do not reduce the number of trunk links. VLANs increase security by segmenting traffic.
+**
+&$T: MC
+&$Q: Which command displays the encapsulation type, the voice VLAN ID, and the access mode VLAN for the Fa0/1 interface?
+&$O: *show interfaces Fa0/1 switchport
+&$O: show interfaces trunk
+&$O: show mac address-table interface Fa0/1
+&$O: show vlan brief
+&$E: The show interfaces switchport command displays the following information for a given port: Switchport, Administrative Mode, Operational Mode, Administrative Trunking Encapsulation, Operational Trunking Encapsulation, Negotiation of Trunking, Access Mode VLAN, Trunking Native Mode VLAN, Administrative Native VLAN tagging, Voice VLAN.
+**
+&$T: MC
+&$Q: What must the network administrator do to remove FastEthernet 0/1 from VLAN 2 and assign it to VLAN 3?
+&$O: Enter the no shutdown interface config command on Fa0/1.
+&$O: Enter the no vlan 2 and the vlan 3 global config commands.
+&$O: *Enter the switchport access vlan 3 interface config command on Fa0/1.
+&$O: Enter the switchport trunk native vlan 3 interface config command on Fa0/1.
+&$E: Entering the switchport access vlan 3 interface config command on Fa0/1 replaces the current port VLAN assignment from VLAN 2 to VLAN 3.
+**
+&$T: MC
+&$Q: A Cisco Catalyst switch has been added to support the use of multiple VLANs as part of an enterprise network. The network technician finds it necessary to clear all VLAN information from the switch in order to incorporate a new network design. What should the technician do to accomplish this task?
+&$O: Delete the IP address that is assigned to the management VLAN and reboot the switch.
+&$O: *Delete the startup configuration and the vlan.dat file in the flash memory of the switch and reboot the switch.
+&$O: Erase the running configuration and reboot the switch.
+&$O: Erase the startup configuration and reboot the switch.
+&$E: To restore a Catalyst switch to its factory default condition, unplug all cables except the console and power cable from the switch. Then enter the erase startup-config privileged EXEC mode command followed by the delete vlan.dat command and reboot the switch.
+**
+&$T: CHECK
+&$Q: Which two characteristics match extended range VLANs? (Choose two.)
+&$O: CDP can be used to learn and store these VLANs.
+&$O: They are commonly used in small networks.
+&$O: *They are saved in the running-config file by default.
+&$O: *VLAN IDs exist between 1006 to 4094.
+&$O: VLANs are initialized from flash memory.
+&$E: Extended range VLANs are stored in the running-configuration file by default and must be saved after being configured. Extended VLANs use the VLAN IDs from 1006 to 4094.
+**
+&$T: MC
+&$Q: What happens to switch ports after the VLAN to which they are assigned is deleted?
+&$O: The ports are assigned to VLAN 1, the default VLAN.
+&$O: The ports are disabled and must be re-enabled using the no shutdown command.
+&$O: The ports are placed in trunk mode.
+&$O: *The ports stop communicating with the attached devices.
+&$E: Any ports that are not moved to an active VLAN cannot communicate with other hosts after the VLAN is deleted. They must be assigned to an active VLAN or their VLAN must be created.
+**
+&$T: CHECK
+&$Q: You must configure a trunk link between a Cisco Catalyst 2960 switch to another vendor Layer 2 switch. Which two commands should be configured to enable the trunk link? (Choose two.)
+&$O: switchport mode access
+&$O: switchport mode dynamic auto
+&$O: switchport mode dynamic desirable
+&$O: *switchport mode trunk
+&$O: *switchport nonegotiate
+&$E: To enable trunking from a Cisco switch to a device that does not support DTP, use the switchport mode trunk and switchport nonegotiate interface configuration mode commands. This causes the interface to become a trunk, but it will not generate DTP frames.
+**
