@@ -1,3 +1,5 @@
+// line 36 onwards to add more quizzes.
+
 const appContainer = document.querySelector('.app-container');
 const startScreen = document.getElementById('start-screen');
 const quizScreen = document.getElementById('quiz-screen');
@@ -29,11 +31,16 @@ let sessionResults = [];
 let userSettings = {
     showAnswers: true
 };
+
+// index the files here after adding them to the data folder
+// add a line then append a comma on the previous one
 const DEFAULT_FILES = [
     'data/quiz_ccna2_mod1.txt',
     'data/quiz_ccna2_mod2.txt',
     'data/quiz_ccna2_mod3.txt',
-    'data/quiz_ccna2_mod4.txt'
+    'data/quiz_ccna2_mod4.txt',
+    'data/quiz_comarch_mod1a.txt',
+    'data/quiz_comarch_mod2a.txt'
 ];
 window.addEventListener('DOMContentLoaded', () => {
     Promise.all(DEFAULT_FILES.map(url =>

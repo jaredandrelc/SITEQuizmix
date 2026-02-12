@@ -1,0 +1,77 @@
+&$NAME: Module 2 Quiz: Karnaugh Maps (K-Map)
+&$COURSE: Digital Logic
+&$DESC: Covers K-Map terminology, grouping rules, and optimization.
+&$SETTING: show_answers=true
+**
+&$T: MATCH
+&$Q: Match the term to its correct definition.
+&$O: A pictorial form of a truth table used to simplify Boolean functions. | K-Map (General Definition)
+&$O: A set of exactly 2^m adjacent cells containing ones or zeroes. | Subcube
+&$O: Cells that are identical except in one variable. | Adjacent Cells
+&$O: A combination of variables whose logical value is not specified (marked with 'X'). | Don't Care Condition
+&$E: The Karnaugh Map is a pictorial form of a truth table. A subcube is defined as a set of adjacent cells. Adjacent cells are identical except in one variable. Don't Care conditions occur when a logical value is not specified.
+**
+&$T: MC
+&$Q: [Grouping Rule] When grouping cells in a K-Map, the number of cells in a group must always be:
+&$O: An odd number (1, 3, 5, 7)
+&$O: *A power of 2 (1, 2, 4, 8, 16...)
+&$O: Any even number (2, 4, 6, 8...)
+&$O: A multiple of 3
+&$E: You must always group adjacent cells in powers of 2 (1, 2, 4, 8, 16, 32, 64).
+**
+&$T: MC
+&$Q: [Mapping Types] If you are mapping 1s (Ones) onto the K-Map, which representation form are you deriving?
+&$O: POS (Product of Sums)
+&$O: *SOP (Sum of Products)
+&$O: BCD (Binary Coded Decimal)
+&$O: XOR Sum
+&$E: 1s are placed in the squares to represent minterms for the SOP (Sum of Products) form.
+**
+&$T: MC
+&$Q: [Mapping Types] If you are mapping 0s (Zeroes) onto the K-Map, which representation form are you deriving?
+&$O: *POS (Product of Sums)
+&$O: SOP (Sum of Products)
+&$O: Canonical Minterm Form
+&$O: Universal Logic
+&$E: 0s are placed in the squares to represent maxterms for the POS (Product of Sums) form.
+**
+&$T: MC
+&$Q: [Constraint] Which of the following grouping methods is STRICTLY FORBIDDEN in a K-Map?
+&$O: Overlapping groups
+&$O: Wrapping from left to right (rolling the map)
+&$O: *Diagonal grouping
+&$O: Grouping four corners
+&$E: Diagonal grouping is not allowed.
+**
+&$T: MC
+&$Q: [Optimization] What is the primary objective when forming groups in a K-Map to ensure the simplest expression?
+&$O: Maximize the number of groups.
+&$O: Make groups as small as possible.
+&$O: *Maximize group size and minimize the number of groups.
+&$O: Avoid overlapping any groups.
+&$E: The objective is to maximize the number of elements in a group (make it large) and minimize the total number of groups.
+**
+&$T: MC
+&$Q: [Structure] How many cells (squares) does a standard 4-variable K-Map contain?
+&$O: 8
+&$O: 12
+&$O: *16
+&$O: 32
+&$E: The number of cells is 2^n. For 4 variables, 2^4 = 16.
+**
+&$T: MC
+&$Q: [Don't Care] How can a "Don't Care" (X) be used during the grouping process?
+&$O: It must always be treated as a 0.
+&$O: *It acts as either a 0 or a 1, whichever helps maximize the group size.
+&$O: It must strictly be ignored.
+&$O: It forces the output to be inverted.
+&$E: An X is placed within the cell and acts as either a 0 or a 1 to maximize the number of elements per group.
+**
+&$T: MC
+&$Q: [History] Who developed the K-Map method in 1953?
+&$O: George Boole
+&$O: *Maurice Karnaugh
+&$O: Augustus De Morgan
+&$O: Claude Shannon
+&$E: It was developed by Karnaugh in 1953, presenting it in his paper "The map method for synthesis of combinational logic circuits".
+**

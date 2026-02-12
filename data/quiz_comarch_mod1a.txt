@@ -1,0 +1,87 @@
+&$NAME: Module 1 Quiz: Digital Logic Gates & Chips
+&$COURSE: Digital Logic
+&$DESC: Covers 74XX series chips, logic levels, and gate definitions.
+&$SETTING: show_answers=true
+**
+&$T: MATCH
+&$Q: Match the specific Integrated Circuit (IC) number to its corresponding Logic Gate.
+&$O: 7400 | Quad 2-Input NAND Gate
+&$O: 7402 | Quad 2-Input NOR Gate
+&$O: 7404 | Hex Inverter (NOT Gate)
+&$O: 7408 | Quad 2-Input AND Gate
+&$O: 7432 | Quad 2-Input OR Gate
+&$O: 7486 | Quad 2-Input XOR Gate
+&$E: 7400=NAND, 7402=NOR, 7404=NOT, 7408=AND, 7432=OR, 7486=XOR.
+**
+&$T: MC
+&$Q: [Logic Levels] In digital systems using Binary Logic, what voltage level typically represents a "TRUE" or "1" state?
+&$O: 0V (Low)
+&$O: *5V (High)
+&$O: 2.5V (Neutral)
+&$O: -5V (Negative)
+&$E: A "TRUE" state corresponds to a binary "1" or "5V" (HIGH) level.
+**
+&$T: MC
+&$Q: [Universal Gates] Which of the following is considered a "Universal Gate" because it can be used to build any other gate?
+&$O: AND Gate
+&$O: XOR Gate
+&$O: *NAND Gate
+&$O: NOT Gate
+&$E: NAND is a "Universal Gate," meaning you can build any other gate (like AND, OR, NOT) by connecting NAND gates in specific patterns.
+**
+&$T: MC
+&$Q: [Gate Definition] Which gate outputs a 1 ONLY if all inputs are 1?
+&$O: OR
+&$O: NAND
+&$O: *AND
+&$O: XOR
+&$E: The AND gate operation is "Logical Multiplication" where the output is 1 only if all inputs are 1.
+**
+&$T: MC
+&$Q: [Gate Definition] Which gate outputs a 1 if the inputs are DIFFERENT (e.g., one is 1, the other is 0)?
+&$O: XNOR
+&$O: *XOR
+&$O: NOR
+&$O: AND
+&$E: The XOR (Exclusive-OR) gate outputs 1 if inputs are different (inequality). If inputs are the same, it outputs 0.
+**
+&$T: MC
+&$Q: [Gate Definition] Which gate is known as the "Inverter"?
+&$O: Buffer
+&$O: OR
+&$O: *NOT
+&$O: NAND
+&$E: The NOT gate is also called an Inverter. It performs complementation.
+**
+&$T: MC
+&$Q: [Precedence] When evaluating a Boolean expression without parentheses, which operator has the HIGHEST priority?
+&$O: OR
+&$O: AND
+&$O: *NOT
+&$O: XOR
+&$E: The standard order of precedence is: 1. NOT (Highest), 2. AND, 3. OR (Lowest).
+**
+&$T: MC
+&$Q: [Logic Construction] How do you create a NOT gate using a NOR gate?
+&$O: Connect the output to the input.
+&$O: *Join the two inputs of the NOR gate together into a single input.
+&$O: Connect one input to 5V.
+&$O: You cannot create a NOT from a NOR.
+&$E: To build a NOT/Inverter from a NOR gate, you join the two inputs together. Logic: (A + A)' = A'.
+**
+&$T: MC
+&$Q: [Gate Definition] What is the specific function of a Buffer gate?
+&$O: It inverts the signal.
+&$O: It performs logical addition.
+&$O: *It creates no logic change but amplifies the signal.
+&$O: It outputs 0 always.
+&$E: A Buffer performs no logic change (A * 1 = A) but is used to amplify the signal.
+**
+&$T: MC
+&$Q: [Logic Definition] The XNOR gate is strictly defined as the inverse of which gate?
+&$O: OR
+&$O: NAND
+&$O: *XOR
+&$O: AND
+&$E: XNOR (Exclusive-NOR) is the opposite of the output of XOR. It outputs 1 if inputs are the same (Equivalence).
+**
