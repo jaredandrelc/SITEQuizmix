@@ -96,7 +96,7 @@
 **
 &$T: MC
 &$Q: [Logic Match] What Logic Gate is this?
-&$IMG: /assets/images/it2623/i2_or.png
+&$IMG: assets/images/it2623/i2_or.png
 &$O: AND
 &$O: NAND
 &$O: *OR
@@ -105,7 +105,7 @@
 **
 &$T: MC
 &$Q: [Logic Match] What Logic Gate is this?
-&$IMG: /assets/images/it2623/i3_nand.png
+&$IMG: assets/images/it2623/i3_nand.png
 &$O: AND
 &$O: *NAND
 &$O: NOT
@@ -114,7 +114,7 @@
 **
 &$T: MC
 &$Q: [Logic Match] What Logic Gate is this?
-&$IMG: /assets/images/it2623/i4_nor.png
+&$IMG: assets/images/it2623/i4_nor.png
 &$O: AND
 &$O: NAND
 &$O: *NOR
@@ -123,7 +123,7 @@
 **
 &$T: MC
 &$Q: [Logic Match] What Logic Gate is this?
-&$IMG: /assets/images/it2623/i5_xor.png
+&$IMG: assets/images/it2623/i5_xor.png
 &$O: AND
 &$O: NAND
 &$O: NOT
@@ -132,7 +132,7 @@
 **
 &$T: MC
 &$Q: [Logic Match] What Logic Gate is this?
-&$IMG: /assets/images/it2623/i6_xnor.png
+&$IMG: assets/images/it2623/i6_xnor.png
 &$O: AND
 &$O: NAND
 &$O: *XNOR

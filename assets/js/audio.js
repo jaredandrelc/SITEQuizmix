@@ -11,14 +11,12 @@ class SoundManager {
             scorelow: new Audio('assets/audio/scorelow.mp3')
         };
 
-        // Preload
         Object.values(this.sounds).forEach(s => s.load());
         this.enabled = true;
     }
 
     play(name) {
         if (!this.enabled || !this.sounds[name]) return;
-        // Reset time to allow rapid replay
         this.sounds[name].currentTime = 0;
         this.sounds[name].play().catch(e => console.warn("Audio play failed", e));
     }
@@ -33,7 +31,6 @@ class SoundManager {
 
 const sfx = new SoundManager();
 
-// Resume context on interaction
 document.addEventListener('click', () => {
     if (sfx.ctx && sfx.ctx.state === 'suspended') sfx.ctx.resume();
 }, { once: true });
