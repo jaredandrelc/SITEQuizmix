@@ -1,0 +1,205 @@
+&$NAME: Introduction to PHP Quiz
+&$COURSE: Web Development
+&$DESC: Covers PHP basics, syntax, history, and dynamic web content
+&$SETTING: show_answers=true
+**
+
+&$T: MC
+&$Q: What does PHP stand for?
+&$O: Personal Home Page
+&$O: Private Hypertext Processor
+&$O: *PHP: Hypertext Preprocessor
+&$O: Preprocessed Hypertext Page
+**
+
+&$T: MC
+&$Q: PHP is a ______ scripting language.
+&$O: Client-side
+&$O: *Server-side
+&$O: Desktop
+&$O: Embedded
+**
+
+&$T: MC
+&$Q: Who created PHP in 1994?
+&$O: Zeev Suraski
+&$O: Andi Gutmans
+&$O: *Rasmus Lerdorf
+&$O: Brendan Eich
+**
+
+&$T: MC
+&$Q: PHP files typically end with:
+&$O: .html
+&$O: .js
+&$O: *.php
+&$O: .xml
+**
+
+&$T: MC
+&$Q: PHP code is enclosed within:
+&$O: <script>
+&$O: <php>
+&$O: *<?php ?>
+&$O: <code>
+**
+
+&$T: MC
+&$Q: Which symbol starts a PHP variable?
+&$O: '#'
+&$O: '*'
+&$O: '-'
+&$O: *'$'
+**
+
+&$T: MC
+&$Q: Which command prints text to the browser?
+&$O: display
+&$O: write
+&$O: *echo
+&$O: show
+**
+
+&$T: MC
+&$Q: PHP statements end with:
+&$O: ':'
+&$O: '.'
+&$O: '*'
+&$O: *';'
+**
+
+&$T: MC
+&$Q: PHP variables are:
+&$O: Not case-sensitive
+&$O: *Case-sensitive
+&$O: Always uppercase
+&$O: Always lowercase
+**
+
+&$T: MC
+&$Q: Which is a valid variable name?
+&$O: $1name
+&$O: $my name
+&$O: *$my_name
+&$O: $my-name
+**
+
+&$T: MC
+&$Q: Single-line comments begin with:
+&$O: ##
+&$O: <!--
+&$O: *//
+&$O: **
+**
+
+&$T: MC
+&$Q: Multi-line comments begin with:
+&$O: //
+&$O: <!--
+&$O: */*
+&$O: */*
+**
+
+&$T: MC
+&$Q: PHP can be embedded inside:
+&$O: Python
+&$O: Java
+&$O: *HTML
+&$O: C++
+**
+
+&$T: MC
+&$Q: The dot (.) operator in PHP is used for:
+&$O: Division
+&$O: Comparison
+&$O: *Concatenation
+&$O: Exponentiation
+**
+
+&$T: MC
+&$Q: PHP was originally developed as:
+&$O: Java-based tool
+&$O: *Perl hack
+&$O: Database engine
+&$O: Browser plugin
+**
+
+&$T: MC
+&$Q: PHP is an example of:
+&$O: Proprietary software
+&$O: *Open-source software
+&$O: Paid software
+&$O: Closed system
+**
+
+&$T: MC
+&$Q: HTML5 includes which media elements?
+&$O: <sound>
+&$O: <movie>
+&$O: *<audio>
+&$O: <media>
+**
+
+&$T: MC
+&$Q: CSS is mainly used for:
+&$O: Database storage
+&$O: Server scripting
+&$O: *Styling web pages
+&$O: Backend processing
+**
+
+&$T: MC
+&$Q: JavaScript allows:
+&$O: Server database creation
+&$O: *Dynamic user interaction
+&$O: File compression
+&$O: OS configuration
+**
+
+&$T: MC
+&$Q: MySQL stores data in:
+&$O: Files only
+&$O: *Tables inside databases
+&$O: Images
+&$O: Scripts
+**
+
+&$T: MC
+&$Q: Variables in PHP:
+&$O: Require declared type
+&$O: *Do not require declared type
+&$O: Must be integers
+&$O: Must be strings
+**
+
+&$T: MC
+&$Q: PHP interpreter sends results to:
+&$O: Database
+&$O: Server
+&$O: *Browser
+&$O: IDE
+**
+
+&$T: MC
+&$Q: PHP supports:
+&$O: Only numbers
+&$O: Only strings
+&$O: *Multiple data types
+&$O: Only arrays
+**
+
+&$T: MC
+&$Q: Sequential whitespace in PHP is:
+&$O: Preserved
+&$O: Multiplied
+&$O: *Condensed
+&$O: Removed entirely
+**
+
+&$T: MC
+&$Q: Echo is considered a:
+&$O: Variable
+&$O: Loop
+&$O: *Statement
+&$O: Condition
+**

@@ -1,0 +1,173 @@
+&$NAME: Global Variables and Forms Quiz
+&$COURSE: Web Development
+&$DESC: Covers variable scope, POST method, and HTML form input types
+&$SETTING: show_answers=true
+**
+
+&$T: MC
+&$Q: Variable scope determines:
+&$O: Variable value
+&$O: Variable type
+&$O: *Where a variable can be accessed
+&$O: Variable size
+**
+
+&$T: MC
+&$Q: PHP uses which array to access POST data?
+&$O: $_GET
+&$O: $_SERVER
+&$O: *$_POST
+&$O: $_REQUEST_DATA
+**
+
+&$T: MC
+&$Q: The POST method is commonly used to:
+&$O: Delete cookies
+&$O: *Submit form data to a server
+&$O: Change CSS styles
+&$O: Run JavaScript
+**
+
+&$T: MC
+&$Q: POST is typically used to:
+&$O: Retrieve static images
+&$O: *Create or update a resource
+&$O: Format text
+&$O: Compile code
+**
+
+&$T: MC
+&$Q: The SUBMIT input type is used to:
+&$O: Clear form fields
+&$O: *Send form information to a server
+&$O: Hide passwords
+&$O: Store cookies
+**
+
+&$T: MC
+&$Q: Required attributes for SUBMIT include:
+&$O: METHOD and ACTION
+&$O: *NAME and VALUE
+&$O: ROWS and COLS
+&$O: SIZE and MAXLENGTH
+**
+
+&$T: MC
+&$Q: TEXTAREA is used for:
+&$O: Password masking
+&$O: *Multiple-line text input
+&$O: Number selection
+&$O: File upload
+**
+
+&$T: MC
+&$Q: TEXTAREA uses which tags?
+&$O: <input>
+&$O: <text>
+&$O: *<textarea>...</textarea>
+&$O: <field>
+**
+
+&$T: MC
+&$Q: TEXTAREA requires which attributes?
+&$O: SIZE and VALUE
+&$O: *NAME, ROWS, COLS
+&$O: CHECKED and VALUE
+&$O: ACTION and METHOD
+**
+
+&$T: MC
+&$Q: CHECKBOX allows users to:
+&$O: Select only one option
+&$O: *Select multiple options
+&$O: Enter passwords
+&$O: Upload files
+**
+
+&$T: MC
+&$Q: RADIO buttons allow users to:
+&$O: Select multiple options
+&$O: *Select only one option in a group
+&$O: Enter numbers
+&$O: Submit automatically
+**
+
+&$T: MC
+&$Q: PASSWORD input type:
+&$O: Displays plain text
+&$O: *Masks entered characters
+&$O: Stores text in database
+&$O: Is visible in URL
+**
+
+&$T: MC
+&$Q: The term for hiding typed characters is:
+&$O: Encrypting
+&$O: Hashing
+&$O: *Echoing
+&$O: Encoding
+**
+
+&$T: MC
+&$Q: PASSWORD requires which attributes?
+&$O: ROWS and COLS
+&$O: *NAME, SIZE, MAXLENGTH
+&$O: METHOD and ACTION
+&$O: MULTIPLE and VALUE
+**
+
+&$T: MC
+&$Q: NUMBER input type is used for:
+&$O: Text paragraphs
+&$O: Emails
+&$O: *Numeric values
+&$O: Search fields
+**
+
+&$T: MC
+&$Q: SELECT tag is used to create:
+&$O: Password fields
+&$O: Checkboxes
+&$O: *Dropdown lists
+&$O: Text areas
+**
+
+&$T: MC
+&$Q: MULTIPLE attribute allows:
+&$O: Only one choice
+&$O: *More than one selection
+&$O: No selection
+&$O: Automatic submission
+**
+
+&$T: MC
+&$Q: RANGE input type represents:
+&$O: Text data
+&$O: Email format
+&$O: *Numeric value within a range
+&$O: File upload
+**
+
+&$T: MC
+&$Q: EMAIL input type:
+&$O: Stores passwords
+&$O: Accepts only numbers
+&$O: *Validates email format
+&$O: Creates database
+**
+
+&$T: MC
+&$Q: SEARCH input type is used for:
+&$O: Password entry
+&$O: *Entering search strings
+&$O: Number validation
+&$O: Date selection
+**
+
+&$T: MC
+&$Q: DATE input type provides:
+&$O: File picker
+&$O: *Date picker (year, month, day)
+&$O: Time zone control
+&$O: Dropdown menu
+**

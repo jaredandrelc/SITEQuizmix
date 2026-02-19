@@ -40,7 +40,10 @@ const DEFAULT_FILES = [
     'data/quiz_ccna2_mod3.txt',
     'data/quiz_ccna2_mod4.txt',
     'data/quiz_comarch_mod1a.txt',
-    'data/quiz_comarch_mod2a.txt'
+    'data/quiz_comarch_mod2a.txt',
+    'data/quiz_backend_mod1.txt',
+    'data/quiz_backend_mod2.txt',
+    'data/quiz_backend_mod3.txt'
 ];
 window.addEventListener('DOMContentLoaded', () => {
     Promise.all(DEFAULT_FILES.map(url =>

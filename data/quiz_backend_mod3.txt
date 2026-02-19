@@ -1,0 +1,205 @@
+&$NAME: PHP Control Structures Quiz
+&$COURSE: Web Development
+&$DESC: Covers operators, expressions, and conditional statements
+&$SETTING: show_answers=true
+**
+
+&$T: MC
+&$Q: Arithmetic operators are used for:
+&$O: Comparing values
+&$O: Logical operations
+&$O: *Mathematical calculations
+&$O: Loop control
+**
+
+&$T: MC
+&$Q: The modulus operator (%) returns the:
+&$O: Quotient
+&$O: Product
+&$O: *Remainder
+&$O: Decimal value
+**
+
+&$T: MC
+&$Q: Comparison operators are mainly used to:
+&$O: Add numbers
+&$O: Store data
+&$O: *Compare two values
+&$O: Loop infinitely
+**
+
+&$T: MC
+&$Q: Logical operators combine:
+&$O: Variables only
+&$O: Numbers
+&$O: *Results of comparisons
+&$O: Comments
+**
+
+&$T: MC
+&$Q: An expression in PHP is:
+&$O: A comment
+&$O: *Combination of values, variables, and operators
+&$O: A loop
+&$O: A function only
+**
+
+&$T: MC
+&$Q: The if statement executes code when:
+&$O: Condition is false
+&$O: *Condition is true
+&$O: Always
+&$O: Never
+**
+
+&$T: MC
+&$Q: if...else is used when:
+&$O: Only true block exists
+&$O: *There are two possible outcomes
+&$O: Looping is required
+&$O: No condition exists
+**
+
+&$T: MC
+&$Q: if...else if...else is considered:
+&$O: Single decision
+&$O: *Multi-way decision control
+&$O: Loop structure
+&$O: Function call
+**
+
+&$T: MC
+&$Q: switch statement is used to:
+&$O: Repeat code
+&$O: *Select one of many blocks
+&$O: Declare variables
+&$O: Compare arrays
+**
+
+&$T: MC
+&$Q: The break keyword in switch:
+&$O: Restarts program
+&$O: *Stops execution of the current case
+&$O: Ends PHP
+&$O: Creates loop
+**
+
+&$T: MC
+&$Q: The default case executes when:
+&$O: First case matches
+&$O: *No case matches
+&$O: Always
+&$O: Condition is true
+**
+
+&$T: MC
+&$Q: Increment operator is:
+&$O: '--'
+&$O: '=='
+&$O: *'++'
+&$O: '&&'
+**
+
+&$T: MC
+&$Q: Decrement operator is:
+&$O: '++'
+&$O: '**'
+&$O: *'--'
+&$O: '||'
+**
+
+&$T: MC
+&$Q: Logical AND operator is:
+&$O: '||'
+&$O: '!'
+&$O: *'&&'
+&$O: '%'
+**
+
+&$T: MC
+&$Q: Logical OR operator is:
+&$O: '&&'
+&$O: '=='
+&$O: *'||'
+&$O: '--'
+**
+
+&$T: MC
+&$Q: Equality comparison operator is:
+&$O: '='
+&$O: *'=='
+&$O: '!='
+&$O: '++'
+**
+
+&$T: MC
+&$Q: Not equal operator is:
+&$O: '=='
+&$O: '='
+&$O: *'!='
+&$O: '&&'
+**
+
+&$T: MC
+&$Q: Conditional statements control:
+&$O: Styling
+&$O: Database size
+&$O: *Program flow
+&$O: File upload
+**
+
+&$T: MC
+&$Q: A boolean condition evaluates to:
+&$O: String
+&$O: Number
+&$O: *True or False
+&$O: Array
+**
+
+&$T: MC
+&$Q: Code inside curly braces {} is called:
+&$O: Variable
+&$O: Operator
+&$O: *Code block
+&$O: Comment
+**
+
+&$T: MC
+&$Q: Which operator compares if greater than?
+&$O: '<'
+&$O: '=='
+&$O: *'>'
+&$O: '='
+**
+
+&$T: MC
+&$Q: Which operator compares if less than?
+&$O: '>'
+&$O: '=='
+&$O: *'<'
+&$O: '='
+**
+
+&$T: MC
+&$Q: Combining multiple conditions uses:
+&$O: Arithmetic operators
+&$O: *Logical operators
+&$O: Echo
+&$O: Comments
+**
+
+&$T: MC
+&$Q: Multi-way decisions are best handled by:
+&$O: echo
+&$O: *switch
+&$O: Variable declaration
+&$O: Concatenation
+**
+
+&$T: MC
+&$Q: Expressions always result in:
+&$O: Comment
+&$O: Loop
+&$O: *A value
+&$O: Function
+**
