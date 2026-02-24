@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"
         rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
 </head>
 
 <body>
@@ -32,9 +33,22 @@
                     <img src="assets/images/logo.svg" alt="Quizmix Logo">
                     <span>Quizmix</span>
                 </div>
+                <div class="search-container" id="main-search-container">
+                    <button id="mobile-search-toggle" class="search-filter-btn" title="Toggle Search">
+                        <span class="material-symbols-rounded" id="mobile-search-icon">search</span>
+                    </button>
+                    <span class="material-symbols-rounded search-icon-left">search</span>
+                    <input type="text" id="quiz-search-input" class="search-input" placeholder="Search quizzes...">
+                    <button id="search-filter-btn" class="search-filter-btn" title="Filter Options">
+                        <span class="material-symbols-rounded">tune</span>
+                    </button>
+                </div>
                 <div class="score-board hidden" id="score-board">
                     Score: <span id="score-val">0</span>
                 </div>
+                <button id="header-close-quiz-btn" class="header-close-btn hidden" title="Close Quiz">
+                    <span class="material-symbols-rounded" style="color: white; font-size: 1.2rem;">close</span>
+                </button>
             </div>
         </header>
 
@@ -66,17 +80,20 @@
             <!-- MAIN CONTENT -->
             <div id="mobile-filters" class="mobile-filters"></div>
 
-            <main class="content-area">
+            <main class="content-area" style="padding: 20px;">
                 <div class="library-header">
-                    <h1>My Library</h1>
-                    <p>Select a quiz to play.</p>
+                    <div class="library-title-row">
+                        <div class="title-text-group">
+                            <h1>My Library</h1>
+                            <p>Select a quiz to play.</p>
+                        </div>
+                    </div>
                 </div>
 
-
-
-
-
-                <div id="course-title-display" class="course-section-title">All Quizzes</div>
+                <div class="search-header-container">
+                    <div id="course-title-display" class="course-section-title">All Quizzes</div>
+                    <div id="search-tags-display" class="search-tags-subtext hidden"></div>
+                </div>
 
                 <div id="quiz-list" class="quiz-grid">
                     <!-- Quiz Cards Injected Here -->
@@ -230,10 +247,28 @@
         </div>
     </div>
 
+    <!-- FILTER MODAL -->
+    <div id="filter-modal" class="modal-overlay hidden filter-overlay">
+        <div class="modal-content filter-content">
+            <div class="modal-header filter-header">
+                <h3>Filter Quizzes</h3>
+                <button id="close-filter-btn" class="close-icon">&times;</button>
+            </div>
+            <div class="filter-body" id="filter-options-container">
+                <!-- Checkboxes injected here -->
+            </div>
+            <div class="modal-actions filter-actions">
+                <button id="clear-filters-btn" class="secondary-btn">Clear All</button>
+                <button id="apply-filters-btn" class="primary-btn">Apply</button>
+            </div>
+        </div>
+    </div>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="assets/js/audio.js"></script>
+    <script src="assets/js/quiz-index.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 

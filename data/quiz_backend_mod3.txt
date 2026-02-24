@@ -1,5 +1,5 @@
 &$NAME: PHP Control Structures Quiz
-&$COURSE: Web Development
+&$COURSE: ICS2609 Backend
 &$DESC: Covers operators, expressions, and conditional statements
 &$SETTING: show_answers=true
 **

@@ -17,6 +17,8 @@ const feedbackMsg = document.getElementById('feedback-msg');
 const progressBar = document.getElementById('progress-bar');
 const scoreValEl = document.getElementById('score-val');
 const scoreBoard = document.getElementById('score-board');
+const headerCloseBtn = document.getElementById('header-close-quiz-btn');
+const mainSearchContainerGlob = document.getElementById('main-search-container');
 const finalScoreVal = document.getElementById('final-score-val');
 const courseListEl = document.getElementById('course-list');
 const mobileFiltersEl = document.getElementById('mobile-filters');
@@ -24,6 +26,9 @@ const courseTitleDisplay = document.getElementById('course-title-display');
 let quizLibrary = [];
 let activeQuiz = null;
 let selectedCourse = 'All Quizzes';
+let selectedFilters = [];
+let searchQuery = '';
+let expandedCourses = new Set();
 let currentIndex = 0;
 let score = 0;
 let currentQuestionFailed = false;
@@ -32,29 +37,17 @@ let userSettings = {
     showAnswers: true
 };
 
-// index the files here after adding them to the data folder
-// add a line then append a comma on the previous one
-const DEFAULT_FILES = [
-    'data/quiz_ccna2_mod1.txt',
-    'data/quiz_ccna2_mod2.txt',
-    'data/quiz_ccna2_mod3.txt',
-    'data/quiz_ccna2_mod4.txt',
-    'data/quiz_comarch_mod1a.txt',
-    'data/quiz_comarch_mod2a.txt',
-    'data/quiz_backend_mod1.txt',
-    'data/quiz_backend_mod2.txt',
-    'data/quiz_backend_mod3.txt'
-];
 window.addEventListener('DOMContentLoaded', () => {
-    Promise.all(DEFAULT_FILES.map(url =>
-        fetch(url)
+    Promise.all(QUIZ_INDEX.map(item =>
+        fetch(item.url)
             .then(res => {
                 if (res.ok) return res.text();
-                throw new Error(`Failed to load ${url}`);
+                throw new Error(`Failed to load ${item.url}`);
             })
             .then(text => {
-                const name = url.split('/').pop().replace('.txt', '');
+                const name = item.url.split('/').pop().replace('.txt', '');
                 const quiz = parseQuiz(text, name);
+                quiz.meta.syscat = item.syscat || 'Uncategorized';
                 return quiz;
             })
             .catch(err => {
@@ -65,7 +58,118 @@ window.addEventListener('DOMContentLoaded', () => {
         quizzes.forEach(quiz => {
             if (quiz) addToLibrary(quiz);
         });
+
+        // Render System Category Filters
+        const filterContainer = document.getElementById('filter-options-container');
+        if (filterContainer && typeof PRESET_CATEGORIES !== 'undefined') {
+            const sysCats = [...PRESET_CATEGORIES];
+            const uniqueFilters = [...new Set(sysCats)];
+
+            uniqueFilters.forEach(cat => {
+                if (cat === 'All Quizzes') return;
+                const label = document.createElement('label');
+                label.className = 'filter-option';
+                const cb = document.createElement('input');
+                cb.type = 'checkbox';
+                cb.value = cat;
+                label.appendChild(cb);
+                label.appendChild(document.createTextNode(' ' + cat));
+                filterContainer.appendChild(label);
+            });
+        }
+
+        // Search Input listener
+        const searchInput = document.getElementById('quiz-search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value.toLowerCase();
+
+                // When actively searching, auto-default to 'All Quizzes' visually and functionally
+                if (searchQuery.trim() !== '') {
+                    selectedCourse = 'All Quizzes';
+                    // Update sidebar active states
+                    const allSidebarItems = document.querySelectorAll('.course-item');
+                    allSidebarItems.forEach(item => {
+                        if (item.dataset.value === 'All Quizzes') {
+                            item.classList.add('active');
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+                }
+
+                renderLibrary();
+            });
+        }
+
+        // Mobile Search Toggle Logic
+        const mobileSearchToggleBtn = document.getElementById('mobile-search-toggle');
+        const mainSearchContainer = document.getElementById('main-search-container');
+        const mobileSearchIcon = document.getElementById('mobile-search-icon');
+
+        if (mobileSearchToggleBtn && mainSearchContainer && mobileSearchIcon) {
+            mobileSearchToggleBtn.addEventListener('click', () => {
+                const isActive = mainSearchContainer.classList.toggle('mobile-active');
+                if (isActive) {
+                    mobileSearchIcon.textContent = 'close';
+                    if (searchInput) {
+                        // Small timeout to allow css layout to settle before focusing
+                        setTimeout(() => searchInput.focus(), 50);
+                    }
+                } else {
+                    mobileSearchIcon.textContent = 'search';
+                    if (searchInput) searchInput.blur();
+                }
+            });
+        }
+
+        // Filter Modal Logic
+        const filterBtn = document.getElementById('search-filter-btn');
+        const filterModal = document.getElementById('filter-modal');
+        const closeFilterBtn = document.getElementById('close-filter-btn');
+        const applyFiltersBtn = document.getElementById('apply-filters-btn');
+        const clearFiltersBtn = document.getElementById('clear-filters-btn');
+        const filterOverlay = document.querySelector('.filter-overlay');
+
+        if (filterBtn && filterModal) {
+            filterBtn.addEventListener('click', () => {
+                filterModal.classList.remove('hidden');
+            });
+
+            const closeFModal = () => filterModal.classList.add('hidden');
+            if (closeFilterBtn) closeFilterBtn.addEventListener('click', closeFModal);
+
+            if (filterOverlay) {
+                filterOverlay.addEventListener('click', (e) => {
+                    if (e.target === filterModal) closeFModal();
+                });
+            }
+
+            if (applyFiltersBtn) {
+                applyFiltersBtn.addEventListener('click', () => {
+                    const cbs = filterContainer.querySelectorAll('input[type="checkbox"]');
+                    selectedFilters = Array.from(cbs).filter(c => c.checked).map(c => c.value);
+                    renderLibrary();
+                    renderSidebar();
+                    closeFModal();
+                });
+            }
+
+            if (clearFiltersBtn) {
+                clearFiltersBtn.addEventListener('click', () => {
+                    const cbs = filterContainer.querySelectorAll('input[type="checkbox"]');
+                    cbs.forEach(c => c.checked = false);
+                    selectedFilters = [];
+                    renderLibrary();
+                    renderSidebar();
+                    closeFModal();
+                });
+            }
+        }
+
         renderSidebar();
+        renderLibrary();
+
         handleRouting();
     });
     const menuBtn = document.getElementById('menu-btn');
@@ -83,12 +187,28 @@ window.addEventListener('DOMContentLoaded', () => {
             if (activeQuiz && quizScreen.classList.contains('active')) {
                 exitModal.classList.remove('hidden');
             } else {
+                // Reset search, filters, and course to original state
+                searchQuery = '';
+                selectedCourse = 'All Quizzes';
+                selectedFilters = [];
+                const searchInput = document.getElementById('quiz-search-input');
+                if (searchInput) searchInput.value = '';
+                // Uncheck all filter checkboxes
+                const cbs = document.querySelectorAll('#filter-options-container input[type="checkbox"]');
+                cbs.forEach(cb => cb.checked = false);
+                // Collapse mobile search if open
+                const msc = document.getElementById('main-search-container');
+                if (msc) msc.classList.remove('mobile-active');
+                const msi = document.getElementById('mobile-search-icon');
+                if (msi) msi.textContent = 'search';
+
                 if (activeQuiz) {
                     window.location.hash = '';
-                }
-                else if (startScreen.classList.contains('active')) {
+                } else if (startScreen.classList.contains('active')) {
                     document.querySelector('.content-area').scrollTop = 0;
                 }
+                renderSidebar();
+                renderLibrary();
             }
         });
     }
@@ -98,6 +218,11 @@ window.addEventListener('DOMContentLoaded', () => {
             closeModal();
             window.location.hash = '';
         });
+    }
+    if (exitModal) {
+        exitModal.onclick = (e) => {
+            if (e.target === exitModal) closeModal();
+        };
     }
     const overlay = document.createElement('div');
     overlay.className = 'sidebar-overlay';
@@ -178,6 +303,12 @@ if (libraryBtn) {
         window.location.hash = '';
     });
 }
+if (headerCloseBtn) {
+    headerCloseBtn.addEventListener('click', () => {
+        const exitModal = document.getElementById('exit-modal');
+        if (exitModal) exitModal.classList.remove('hidden');
+    });
+}
 nextBtn.addEventListener('click', () => {
     nextQuestion();
 });
@@ -186,6 +317,8 @@ function returnToLibrary() {
     resultScreen.classList.remove('active');
     quizScreen.classList.remove('active');
     scoreBoard.classList.add('hidden');
+    if (headerCloseBtn) headerCloseBtn.classList.add('hidden');
+    if (mainSearchContainerGlob) mainSearchContainerGlob.classList.remove('hidden');
     startScreen.classList.add('active');
     renderLibrary();
     if (window.location.hash !== '' && !window.location.hash.includes('#')) {
@@ -199,15 +332,78 @@ function addToLibrary(quiz) {
 }
 function renderLibrary() {
     quizListContainer.innerHTML = '';
-    const filtered = selectedCourse === 'All Quizzes'
-        ? quizLibrary
-        : quizLibrary.filter(q => q.meta.course === selectedCourse);
-    courseTitleDisplay.textContent = selectedCourse;
+
+    const filtered = quizLibrary.filter(q => {
+        // Evaluate Course (Sidebar)
+        let matchesCourse = selectedCourse === 'All Quizzes' || q.meta.course === selectedCourse;
+
+        // Evaluate Filter Categories (OR Logic on System Categories)
+        let matchesFilter = true;
+        if (selectedFilters.length > 0) {
+            matchesFilter = selectedFilters.some(filter => q.meta.syscat === filter);
+        }
+
+        // Evaluate Search Query
+        let matchesSearch = true;
+        if (searchQuery.trim() !== '') {
+            matchesSearch = q.meta.name.toLowerCase().includes(searchQuery);
+        }
+
+        return matchesCourse && matchesFilter && matchesSearch;
+    });
+
+    const ctd = document.getElementById('course-title-display');
+    const std = document.getElementById('search-tags-display');
+    if (ctd) {
+        ctd.style.display = 'block';
+
+        let labelText = selectedCourse;
+        if (searchQuery.trim() !== '') {
+            labelText = `Searching ${selectedCourse}`;
+        }
+        ctd.textContent = labelText;
+    }
+
+    // Render filter tags as pill badges underneath the title
+    if (std) {
+        if (selectedFilters.length > 0) {
+            std.classList.remove('hidden');
+            const maxShow = 2;
+            const visible = selectedFilters.slice(0, maxShow);
+            let html = visible.map(f =>
+                `<span class="tag">${f}<button class="tag-close" data-filter="${f}" title="Remove filter">&times;</button></span>`
+            ).join('');
+
+            if (selectedFilters.length > maxShow) {
+                const remaining = selectedFilters.length - maxShow;
+                html += `<span class="tag-more">+${remaining} other tag${remaining > 1 ? 's' : ''}</span>`;
+            }
+            std.innerHTML = html;
+
+            // Wire up close buttons to remove individual filters
+            std.querySelectorAll('.tag-close').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const filterVal = btn.dataset.filter;
+                    selectedFilters = selectedFilters.filter(f => f !== filterVal);
+                    // Uncheck the corresponding checkbox in the filter modal
+                    const cb = document.querySelector(`#filter-options-container input[value="${filterVal}"]`);
+                    if (cb) cb.checked = false;
+                    renderLibrary();
+                    renderSidebar();
+                });
+            });
+        } else {
+            std.classList.add('hidden');
+            std.innerHTML = '';
+        }
+    }
+
     if (filtered.length === 0) {
         if (quizLibrary.length === 0) {
             quizListContainer.innerHTML = '<p class="empty-msg">No local quizzes found. Check GitHub for updates.</p>';
         } else {
-            quizListContainer.innerHTML = '<p class="empty-msg">No quizzes in this course.</p>';
+            quizListContainer.innerHTML = '<p class="empty-msg">No quizzes matching your criteria.</p>';
         }
         return;
     }
@@ -216,49 +412,208 @@ function renderLibrary() {
         card.className = 'quiz-card';
         const title = document.createElement('h3');
         title.textContent = quiz.meta.name;
-        if (quiz.meta.course && quiz.meta.course !== 'Uncategorized') {
-            const courseBadge = document.createElement('span');
-            courseBadge.className = 'q-type-badge';
-            courseBadge.style.fontSize = '0.7rem';
-            courseBadge.style.marginRight = '8px';
-            courseBadge.textContent = quiz.meta.course;
-            title.prepend(courseBadge);
-        }
         const desc = document.createElement('p');
         desc.textContent = quiz.meta.description || "No description provided.";
-        const info = document.createElement('small');
-        info.textContent = `${quiz.questions.length} Questions`;
+
+        const tagsContainer = document.createElement('div');
+        tagsContainer.className = 'quiz-tags';
+
+        const courseOpt = quiz.meta.course || 'Uncategorized';
+        const syscatOpt = quiz.meta.syscat || 'Uncategorized';
+
+        if (courseOpt !== 'Uncategorized') {
+            const courseTag = document.createElement('span');
+            courseTag.className = 'quiz-tag course-tag';
+            courseTag.textContent = courseOpt;
+            tagsContainer.appendChild(courseTag);
+        }
+
+        if (syscatOpt !== 'Uncategorized') {
+            const syscatTag = document.createElement('span');
+            syscatTag.className = 'quiz-tag syscat-tag';
+            syscatTag.textContent = syscatOpt;
+            tagsContainer.appendChild(syscatTag);
+        }
+
+        const lengthTag = document.createElement('span');
+        lengthTag.className = 'quiz-tag length-tag';
+        lengthTag.textContent = `${quiz.questions.length} Questions`;
+        tagsContainer.appendChild(lengthTag);
+
         card.appendChild(title);
         card.appendChild(desc);
-        card.appendChild(info);
+        card.appendChild(tagsContainer);
         card.onclick = () => {
             window.location.hash = quiz.meta.id;
         };
         quizListContainer.appendChild(card);
     });
 }
+
 function renderSidebar() {
     const courses = new Set(['All Quizzes']);
+    const courseData = { 'All Quizzes': { count: quizLibrary.length, syscats: new Set() } };
+
     quizLibrary.forEach(q => {
-        if (q.meta.course) courses.add(q.meta.course);
+        if (q.meta.course && q.meta.course !== 'Uncategorized') {
+            courses.add(q.meta.course);
+            if (!courseData[q.meta.course]) courseData[q.meta.course] = { count: 0, syscats: new Set() };
+            courseData[q.meta.course].count++;
+
+            if (q.meta.syscat && q.meta.syscat !== 'Uncategorized') {
+                courseData[q.meta.course].syscats.add(q.meta.syscat);
+            }
+        }
     });
+
     courseListEl.innerHTML = '';
     mobileFiltersEl.innerHTML = '';
+
+    // Desktop: Nested Tree Generation
     courses.forEach(course => {
-        const item = document.createElement('div');
-        item.className = `course-item ${selectedCourse === course ? 'active' : ''}`;
-        item.textContent = course;
-        item.onclick = () => selectCourse(course);
-        courseListEl.appendChild(item);
-        const chip = document.createElement('div');
-        chip.className = `course-item ${selectedCourse === course ? 'active' : ''}`;
-        chip.textContent = course;
-        chip.onclick = () => selectCourse(course);
-        mobileFiltersEl.appendChild(chip);
+        const createGroup = () => {
+            const group = document.createElement('div');
+            group.className = 'course-group';
+
+            const item = document.createElement('div');
+            const isCourseActive = selectedCourse === course;
+            item.className = `course-item ${isCourseActive && selectedFilters.length === 0 ? 'active' : ''}`;
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'course-item-content';
+
+            const nameSpan = document.createElement('span');
+            nameSpan.textContent = course;
+
+            let childrenContainer = null;
+            let expandIcon = null;
+
+            if (course !== 'All Quizzes' && courseData[course].syscats.size > 0) {
+                expandIcon = document.createElement('span');
+                expandIcon.className = 'material-symbols-rounded expand-icon';
+                expandIcon.textContent = expandedCourses.has(course) ? 'folder_open' : 'folder';
+                contentDiv.appendChild(expandIcon);
+
+                if (expandedCourses.has(course)) item.classList.add('expanded');
+
+                childrenContainer = document.createElement('div');
+                childrenContainer.className = `course-children ${expandedCourses.has(course) ? 'open' : ''}`;
+
+                courseData[course].syscats.forEach(syscat => {
+                    const syscatItem = document.createElement('div');
+                    const isActiveSyscat = selectedFilters.includes(syscat) && selectedCourse === course;
+                    syscatItem.className = `syscat-item ${isActiveSyscat ? 'active' : ''}`;
+
+                    const syscatName = document.createElement('span');
+                    syscatName.textContent = syscat;
+                    syscatItem.appendChild(syscatName);
+
+                    // No course-count spans for system categories as per user request
+
+                    syscatItem.onclick = (e) => {
+                        e.stopPropagation();
+                        selectedCourse = course;
+                        selectedFilters = [syscat];
+
+                        // Sync with modal checkboxes
+                        const filterContainer = document.getElementById('filter-options-container');
+                        if (filterContainer) {
+                            const cbs = filterContainer.querySelectorAll('input[type="checkbox"]');
+                            cbs.forEach(c => c.checked = (c.value === syscat));
+                        }
+
+                        renderLibrary();
+                        renderSidebar();
+                    };
+                    childrenContainer.appendChild(syscatItem);
+                });
+            }
+
+            contentDiv.appendChild(nameSpan);
+            item.appendChild(contentDiv);
+
+            const countSpan = document.createElement('span');
+            countSpan.className = 'course-count';
+            countSpan.textContent = courseData[course].count;
+            item.appendChild(countSpan);
+
+            item.onclick = (e) => {
+                e.stopPropagation();
+                if (childrenContainer) {
+                    if (expandedCourses.has(course)) {
+                        expandedCourses.delete(course);
+                    } else {
+                        expandedCourses.add(course);
+                    }
+                }
+
+                selectedCourse = course;
+                selectedFilters = []; // Reset syscat filters when clicking root folder
+                const filterContainer = document.getElementById('filter-options-container');
+                if (filterContainer) {
+                    const cbs = filterContainer.querySelectorAll('input[type="checkbox"]');
+                    cbs.forEach(c => c.checked = false);
+                }
+
+                renderLibrary();
+                renderSidebar();
+            };
+
+            group.appendChild(item);
+            if (childrenContainer) group.appendChild(childrenContainer);
+
+            return group;
+        };
+
+        courseListEl.appendChild(createGroup());
     });
+
+    // Mobile: Simple Tabs (Limit 8) + Hamburger Overlay Trigger
+    const coursesArr = Array.from(courses);
+    const mobileLimit = Math.min(coursesArr.length, 8);
+    for (let i = 0; i < mobileLimit; i++) {
+        const course = coursesArr[i];
+        const chip = document.createElement('div');
+        const isCourseActive = selectedCourse === course;
+        chip.className = `course-item ${isCourseActive && selectedFilters.length === 0 ? 'active' : ''}`;
+
+        const chipNameSpan = document.createElement('span');
+        chipNameSpan.textContent = course;
+        chip.appendChild(chipNameSpan);
+
+        chip.onclick = () => {
+            selectedCourse = course;
+            selectedFilters = []; // Force clear on generic select
+            renderLibrary();
+            renderSidebar();
+        };
+        mobileFiltersEl.appendChild(chip);
+    }
+
+    if (coursesArr.length > 8) {
+        const moreChip = document.createElement('div');
+        moreChip.className = 'course-item';
+        moreChip.style.display = 'flex';
+        moreChip.style.alignItems = 'center';
+        moreChip.style.gap = '5px';
+
+        const moreIcon = document.createElement('span');
+        moreIcon.className = 'material-symbols-rounded';
+        moreIcon.textContent = 'menu';
+        moreIcon.style.fontSize = '1.2rem';
+        moreChip.appendChild(moreIcon);
+
+        moreChip.onclick = () => {
+            const sidebarBtn = document.getElementById('menu-btn');
+            if (sidebarBtn) sidebarBtn.click();
+        };
+        mobileFiltersEl.appendChild(moreChip);
+    }
 }
+
 function selectCourse(course) {
     selectedCourse = course;
+    selectedFilters = []; // Force clear on generic select
     renderLibrary();
     renderSidebar();
     if (window.innerWidth <= 768) {
@@ -269,6 +624,7 @@ function selectCourse(course) {
         }
     }
 }
+
 function parseQuiz(text, filenameFallback) {
     const blocks = text.split('**').map(b => b.trim()).filter(b => b.length > 0);
     let meta = {
@@ -360,6 +716,8 @@ function startQuizSession(quizObj) {
     startScreen.classList.remove('active');
     quizScreen.classList.add('active');
     scoreBoard.classList.remove('hidden');
+    if (headerCloseBtn) headerCloseBtn.classList.remove('hidden');
+    if (mainSearchContainerGlob) mainSearchContainerGlob.classList.add('hidden');
     resultScreen.classList.remove('active');
     currentIndex = 0;
     score = 0;

@@ -1,5 +1,5 @@
 &$NAME: Global Variables and Forms Quiz
-&$COURSE: Web Development
+&$COURSE: ICS2609 Backend
 &$DESC: Covers variable scope, POST method, and HTML form input types
 &$SETTING: show_answers=true
 **

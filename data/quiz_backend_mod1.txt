@@ -1,5 +1,5 @@
 &$NAME: Introduction to PHP Quiz
-&$COURSE: Web Development
+&$COURSE: ICS2609 Backend
 &$DESC: Covers PHP basics, syntax, history, and dynamic web content
 &$SETTING: show_answers=true
 **
