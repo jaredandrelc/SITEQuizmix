@@ -96,6 +96,11 @@ body {
     flex-wrap: wrap;
 }
 
+.header-content.quiz-active {
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+
 #score-board {
     margin-left: auto;
 }

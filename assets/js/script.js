@@ -1,5 +1,3 @@
-// line 36 onwards to add more quizzes.
-
 const appContainer = document.querySelector('.app-container');
 const startScreen = document.getElementById('start-screen');
 const quizScreen = document.getElementById('quiz-screen');
@@ -319,6 +317,10 @@ function returnToLibrary() {
     scoreBoard.classList.add('hidden');
     if (headerCloseBtn) headerCloseBtn.classList.add('hidden');
     if (mainSearchContainerGlob) mainSearchContainerGlob.classList.remove('hidden');
+    const menuBtnEl = document.getElementById('menu-btn');
+    if (menuBtnEl) menuBtnEl.style.display = '';
+    const hc = document.querySelector('.header-content');
+    if (hc) hc.classList.remove('quiz-active');
     startScreen.classList.add('active');
     renderLibrary();
     if (window.location.hash !== '' && !window.location.hash.includes('#')) {
@@ -718,6 +720,10 @@ function startQuizSession(quizObj) {
     scoreBoard.classList.remove('hidden');
     if (headerCloseBtn) headerCloseBtn.classList.remove('hidden');
     if (mainSearchContainerGlob) mainSearchContainerGlob.classList.add('hidden');
+    const menuBtnEl = document.getElementById('menu-btn');
+    if (menuBtnEl) menuBtnEl.style.display = 'none';
+    const hc = document.querySelector('.header-content');
+    if (hc) hc.classList.add('quiz-active');
     resultScreen.classList.remove('active');
     currentIndex = 0;
     score = 0;
