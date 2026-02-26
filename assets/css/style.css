@@ -46,12 +46,15 @@
 }
 
 input,
+button,
+select,
 textarea,
 [contenteditable] {
     -webkit-user-select: text;
     -moz-user-select: text;
     -ms-user-select: text;
     user-select: text;
+    font-family: inherit;
 }
 
 body {
@@ -232,7 +235,7 @@ body {
     flex-direction: row;
     overflow-x: auto;
     gap: 10px;
-    padding: 2px 5px 15px 5px;
+    padding: 2px 5px 6px 5px;
     margin: 0;
     flex-shrink: 0;
     width: 600px;
@@ -267,7 +270,7 @@ body {
     padding: 4px 8px;
     border-radius: var(--radius);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background 0.3s ease, color 0.3s ease;
     font-weight: 500;
     color: var(--text-muted);
     display: flex;
@@ -314,13 +317,29 @@ body {
     display: flex;
 }
 
+.course-children.animating {
+    animation: slideDownFade 0.3s ease-out forwards;
+}
+
+@keyframes slideDownFade {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .syscat-item {
     white-space: normal;
     padding: 2px 8px;
     border-radius: var(--radius);
     cursor: pointer;
-    transition: all 0.2s;
-    font-size: 0.9rem;
+    transition: background 0.3s ease, color 0.3s ease;
+    font-size: 0.85rem;
     color: var(--text-muted);
     font-weight: 500;
     display: flex;
@@ -591,7 +610,7 @@ body {
         width: 100%;
         padding-left: 20px;
         padding-right: 20px;
-        margin-bottom: 15px;
+        margin-bottom: 5px;
         box-sizing: border-box;
     }
 
@@ -829,6 +848,110 @@ footer {
     background: rgba(0, 0, 0, 0.3);
     color: #bbb;
     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Skeleton Loading State (Fast Beat) */
+.skeleton {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: transparent;
+    pointer-events: none;
+    user-select: none;
+    box-shadow: none !important;
+    animation: beat 0.8s infinite alternate;
+}
+
+.skeleton-title {
+    height: 20px;
+    width: 70%;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.skeleton-desc {
+    height: 14px;
+    width: 90%;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    margin-bottom: 24px;
+}
+
+.skeleton-tags {
+    display: flex;
+    gap: 8px;
+}
+
+.skeleton-tag {
+    height: 20px;
+    width: 60px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+}
+
+@keyframes beat {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.99);
+    }
+
+    100% {
+        opacity: 0.8;
+        transform: scale(1.01);
+    }
+}
+
+/* CSS Spinner Overlay */
+.loading-spinner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.spinner-ring {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    background: #222;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Android-style Cascade Entrance */
+.cascade-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: cascadeEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes cascadeEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .remove-quiz {

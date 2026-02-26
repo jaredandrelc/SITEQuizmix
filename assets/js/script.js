@@ -27,6 +27,7 @@ let selectedCourse = 'All Quizzes';
 let selectedFilters = [];
 let searchQuery = '';
 let expandedCourses = new Set();
+let justOpenedCourse = null;
 let currentIndex = 0;
 let score = 0;
 let currentQuestionFailed = false;
@@ -35,8 +36,36 @@ let userSettings = {
     showAnswers: true
 };
 
+let isInitialLoad = true;
+
 window.addEventListener('DOMContentLoaded', () => {
-    Promise.all(QUIZ_INDEX.map(item =>
+    // Show Static Skeletons & Spinner Overlay Immediately
+    quizListContainer.innerHTML = '';
+
+    // Add the un-selectable, static beating skeletons
+    for (let i = 0; i < 6; i++) {
+        const skeleton = document.createElement('div');
+        skeleton.className = 'quiz-card skeleton';
+        skeleton.innerHTML = `
+            <div class="skeleton-title"></div>
+            <div class="skeleton-desc"></div>
+            <div class="skeleton-tags">
+                <div class="skeleton-tag"></div>
+                <div class="skeleton-tag"></div>
+            </div>
+        `;
+        quizListContainer.appendChild(skeleton);
+    }
+
+    // Inject the CSS circle spinner spinning on top of them
+    const spinnerOverlay = document.createElement('div');
+    spinnerOverlay.className = 'loading-spinner-overlay';
+    spinnerOverlay.innerHTML = '<div class="spinner-ring"></div>';
+    quizListContainer.appendChild(spinnerOverlay);
+
+    const minLoadTime = new Promise(resolve => setTimeout(resolve, 1500));
+
+    const fetchQuizzes = Promise.all(QUIZ_INDEX.map(item =>
         fetch(item.url)
             .then(res => {
                 if (res.ok) return res.text();
@@ -56,6 +85,11 @@ window.addEventListener('DOMContentLoaded', () => {
         quizzes.forEach(quiz => {
             if (quiz) addToLibrary(quiz);
         });
+        return true;
+    });
+
+    Promise.all([fetchQuizzes, minLoadTime]).then(() => {
+        isInitialLoad = false;
 
         // Render System Category Filters
         const filterContainer = document.getElementById('filter-options-container');
@@ -333,6 +367,8 @@ function addToLibrary(quiz) {
     }
 }
 function renderLibrary() {
+    if (isInitialLoad) return; // Skeletons and CSS spinner handle the display
+
     quizListContainer.innerHTML = '';
 
     const filtered = quizLibrary.filter(q => {
@@ -411,7 +447,9 @@ function renderLibrary() {
     }
     filtered.forEach((quiz, index) => {
         const card = document.createElement('div');
-        card.className = 'quiz-card';
+        card.className = 'quiz-card cascade-animate';
+        // Stagger entrance with a 60ms delay per card
+        card.style.animationDelay = `${index * 0.06}s`;
         const title = document.createElement('h3');
         title.textContent = quiz.meta.name;
         const desc = document.createElement('p');
@@ -500,6 +538,9 @@ function renderSidebar() {
 
                 childrenContainer = document.createElement('div');
                 childrenContainer.className = `course-children ${expandedCourses.has(course) ? 'open' : ''}`;
+                if (course === justOpenedCourse) {
+                    childrenContainer.classList.add('animating');
+                }
 
                 courseData[course].syscats.forEach(syscat => {
                     const syscatItem = document.createElement('div');
@@ -546,6 +587,7 @@ function renderSidebar() {
                         expandedCourses.delete(course);
                     } else {
                         expandedCourses.add(course);
+                        justOpenedCourse = course;
                     }
                 }
 
@@ -611,6 +653,8 @@ function renderSidebar() {
         };
         mobileFiltersEl.appendChild(moreChip);
     }
+
+    justOpenedCourse = null;
 }
 
 function selectCourse(course) {
