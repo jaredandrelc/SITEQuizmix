@@ -411,7 +411,11 @@ function renderLibrary() {
         // Evaluate Search Query
         let matchesSearch = true;
         if (searchQuery.trim() !== '') {
-            matchesSearch = q.meta.name.toLowerCase().includes(searchQuery);
+            const sq = searchQuery.toLowerCase();
+            const nameMatch = q.meta.name && q.meta.name.toLowerCase().includes(sq);
+            const courseMatch = q.meta.course && q.meta.course.toLowerCase().includes(sq);
+            const syscatMatch = q.meta.syscat && q.meta.syscat.toLowerCase().includes(sq);
+            matchesSearch = nameMatch || courseMatch || syscatMatch;
         }
 
         return matchesCourse && matchesFilter && matchesSearch;
