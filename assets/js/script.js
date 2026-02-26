@@ -28,6 +28,11 @@ let selectedFilters = [];
 let searchQuery = '';
 let expandedCourses = new Set();
 let justOpenedCourse = null;
+let searchSuggestionsPool = [];
+let suggestionTypeTimeout = null;
+let currentSuggestionIndex = 0;
+let isTypingActive = false;
+let isInputFocused = false;
 let currentIndex = 0;
 let score = 0;
 let currentQuestionFailed = false;
@@ -91,6 +96,14 @@ window.addEventListener('DOMContentLoaded', () => {
     Promise.all([fetchQuizzes, minLoadTime]).then(() => {
         isInitialLoad = false;
 
+        // Populate search suggestion pool & start animation
+        const names = quizLibrary.map(q => q.meta.name);
+        const categories = quizLibrary.map(q => q.meta.syscat).filter(c => c && c !== 'Uncategorized');
+        const coursesList = quizLibrary.map(q => q.meta.course).filter(c => c && c !== 'Uncategorized');
+        searchSuggestionsPool = [...new Set([...names, ...categories, ...coursesList])];
+        searchSuggestionsPool.sort(() => 0.5 - Math.random());
+        startSearchPlaceholderAnimation();
+
         // Render System Category Filters
         const filterContainer = document.getElementById('filter-options-container');
         if (filterContainer && typeof PRESET_CATEGORIES !== 'undefined') {
@@ -113,6 +126,20 @@ window.addEventListener('DOMContentLoaded', () => {
         // Search Input listener
         const searchInput = document.getElementById('quiz-search-input');
         if (searchInput) {
+            searchInput.addEventListener('focus', () => {
+                isInputFocused = true;
+                searchInput.placeholder = 'Search quizzes...'; // Preemptively clear the active typed frame
+            });
+
+            searchInput.addEventListener('blur', () => {
+                isInputFocused = false;
+                if (searchInput.value.trim() === '') {
+                    if (!isTypingActive && searchSuggestionsPool.length > 0) {
+                        startSearchPlaceholderAnimation();
+                    }
+                }
+            });
+
             searchInput.addEventListener('input', (e) => {
                 searchQuery = e.target.value.toLowerCase();
 
@@ -1260,4 +1287,55 @@ function animateScore(target, total) {
         }
     }
     requestAnimationFrame(update);
+}
+
+// ----------------------------------------------------
+// Search Bar Animated Placeholders
+// ----------------------------------------------------
+function startSearchPlaceholderAnimation() {
+    const searchInput = document.getElementById('quiz-search-input');
+    const suggestionEl = document.getElementById('search-suggestion-text');
+    if (!searchInput || !suggestionEl || searchSuggestionsPool.length === 0) return;
+
+    isTypingActive = true;
+    clearTimeout(suggestionTypeTimeout);
+
+    function cycleSuggestion() {
+        if (!isTypingActive || isInputFocused || searchInput.value.trim() !== '') {
+            suggestionEl.style.display = 'none';
+            suggestionEl.className = 'search-suggestion';
+            searchInput.placeholder = 'Search quizzes...';
+            isTypingActive = false;
+            return;
+        }
+
+        searchInput.placeholder = '';
+        suggestionEl.style.display = 'block';
+
+        const suggestion = searchSuggestionsPool[currentSuggestionIndex % searchSuggestionsPool.length];
+        const fullText = `Search '${suggestion}'...`;
+
+        suggestionEl.className = 'search-suggestion';
+        void suggestionEl.offsetWidth; // Force Reflow
+        suggestionEl.textContent = fullText;
+        suggestionEl.classList.add('anim-scroll-in');
+
+        // Suggestion stays visible for 5 seconds
+        suggestionTypeTimeout = setTimeout(() => {
+            if (!isTypingActive || isInputFocused || searchInput.value.trim() !== '') {
+                return cycleSuggestion(); // Instantly exit if aborted
+            }
+
+            suggestionEl.classList.remove('anim-scroll-in');
+            suggestionEl.classList.add('anim-scroll-out');
+
+            // Wait 500ms for exit animation
+            suggestionTypeTimeout = setTimeout(() => {
+                currentSuggestionIndex++;
+                cycleSuggestion();
+            }, 500);
+        }, 5000);
+    }
+
+    cycleSuggestion();
 }

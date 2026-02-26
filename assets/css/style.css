@@ -2211,3 +2211,68 @@ input[type="file"] {
         max-height: 200px;
     }
 }
+
+/* ------------------------------------------------ */
+/* Animated Search Suggestions (Scroll Fade)        */
+/* ------------------------------------------------ */
+.search-input-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 100%;
+}
+
+.search-input {
+    background: transparent !important;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.search-suggestion {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    pointer-events: none;
+    z-index: 1;
+    white-space: nowrap;
+    opacity: 0;
+    font-family: inherit;
+}
+
+.search-suggestion.anim-scroll-in {
+    animation: suggestionFadeScrollIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.search-suggestion.anim-scroll-out {
+    animation: suggestionFadeScrollOut 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes suggestionFadeScrollIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes suggestionFadeScrollOut {
+    0% {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-150%);
+    }
+}
