@@ -7,7 +7,8 @@ const QUIZ_INDEX = [
     { url: 'data/quiz_comarch_mod2a.txt', syscat: 'Short Quiz' },
     { url: 'data/quiz_backend_mod1.txt', syscat: 'Short Quiz' },
     { url: 'data/quiz_backend_mod2.txt', syscat: 'Short Quiz' },
-    { url: 'data/quiz_backend_mod3.txt', syscat: 'Short Quiz' }
+    { url: 'data/quiz_backend_mod3.txt', syscat: 'Short Quiz' },
+    { url: 'data/quiz_backend_mod4.txt', syscat: 'Short Quiz' }
 ];
 
 const PRESET_CATEGORIES = [

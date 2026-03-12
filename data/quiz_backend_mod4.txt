@@ -1,0 +1,238 @@
+&$NAME: PHP Functions Quiz
+&$COURSE: ICS2609 Backend
+&$DESC: Quiz about PHP Built-in Functions and User Defined Functions
+&$SETTING: show_answers=true
+**
+
+&$T: MC
+&$Q: What is a function in PHP?
+&$O: A variable that stores numbers
+&$O: A type of database
+&$O: *A set of statements that performs a particular task
+&$O: A type of loop
+**
+
+&$T: MC
+&$Q: Why are functions useful in programming?
+&$O: They increase typing
+&$O: *They reduce repetition of code
+&$O: They remove variables
+&$O: They stop execution
+**
+
+&$T: MC
+&$Q: How do you call a function in PHP?
+&$O: FunctionName[]
+&$O: *FunctionName()
+&$O: FunctionName{}
+&$O: FunctionName<>
+**
+
+&$T: MC
+&$Q: Which statement about PHP function names is correct?
+&$O: *They are case-sensitive
+&$O: They are case-insensitive
+&$O: They must be complex
+&$O: They must start with numbers
+**
+
+&$T: MC
+&$Q: Approximately how many built-in functions does PHP provide?
+&$O: 50 - 100
+&$O: 200 - 500
+&$O: Less than 1000
+&$O: *Over 1000
+**
+
+&$T: MC
+&$Q: Which category of built-in function manipulates text?
+&$O: Numeric Functions
+&$O: Date Functions
+&$O: *String Functions
+&$O: Loop Functions
+**
+
+&$T: IDENT
+&$Q: What PHP function returns the length of a string? (Include the open and close parentheses in the end of the function)
+&$O: strlen()
+**
+
+&$T: IDENT
+&$Q: Which PHP function counts the number of words in a string? (Include the open and close parentheses in the end of the function)
+&$O: str_word_count()
+**
+
+&$T: IDENT
+&$Q: Which PHP function reverses a string? (Include the open and close parentheses in the end of the function)
+&$O: strrev()
+**
+
+&$T: MC
+&$Q: What does the strpos() function do?
+&$O: Reverses text
+&$O: *Finds the position of text inside a string
+&$O: Converts text to uppercase
+&$O: Counts characters
+**
+
+&$T: MC
+&$Q: What does str_replace() do?
+&$O: Searches numbers
+&$O: *Replaces characters in a string
+&$O: Deletes a string
+&$O: Reverses characters
+**
+
+&$T: MC
+&$Q: Which function converts all characters of a string to lowercase?
+&$O: strtoupper()
+&$O: *strtolower()
+&$O: ucwords()
+&$O: ucfirst()
+**
+
+&$T: MC
+&$Q: Which function converts all characters of a string to uppercase?
+&$O: strtolower()
+&$O: lcfirst()
+&$O: *strtoupper()
+&$O: ucfirst()
+**
+
+&$T: MC
+&$Q: Which function capitalizes the first letter of each word?
+&$O: ucfirst()
+&$O: strtolower()
+&$O: *ucwords()
+&$O: strrev()
+**
+
+&$T: MC
+&$Q: Which function converts the first character of a string to uppercase?
+&$O: lcfirst()
+&$O: ucwords()
+&$O: *ucfirst()
+&$O: strtolower()
+**
+
+&$T: MC
+&$Q: Which function converts the first character of a string to lowercase?
+&$O: ucfirst()
+&$O: strtoupper()
+&$O: *lcfirst()
+&$O: strrev()
+**
+
+&$T: MC
+&$Q: What category of functions performs mathematical operations?
+&$O: String Functions
+&$O: Date Functions
+&$O: *Numeric Functions
+&$O: Boolean Functions
+**
+
+&$T: MC
+&$Q: Which function formats numbers with grouped thousands?
+&$O: round()
+&$O: abs()
+&$O: *number_format()
+&$O: max()
+**
+
+&$T: MC
+&$Q: Which function rounds a floating-point number?
+&$O: rand()
+&$O: *round()
+&$O: abs()
+&$O: min()
+**
+
+&$T: MC
+&$Q: What does the abs() function return?
+&$O: The largest number
+&$O: *The absolute value of a number
+&$O: The average value
+&$O: A random number
+**
+
+&$T: MC
+&$Q: Which function generates a random integer?
+&$O: max()
+&$O: min()
+&$O: *rand()
+&$O: abs()
+**
+
+&$T: MC
+&$Q: Which function returns the highest value among given numbers?
+&$O: min()
+&$O: rand()
+&$O: *max()
+&$O: abs()
+**
+
+&$T: MC
+&$Q: Which function returns the lowest value among given numbers?
+&$O: max()
+&$O: rand()
+&$O: *min()
+&$O: round()
+**
+
+&$T: MC
+&$Q: Which PHP function formats date and time?
+&$O: time()
+&$O: format()
+&$O: *date()
+&$O: now()
+**
+
+&$T: IDENT
+&$Q: What letter in the date() format represents a four-digit year?
+&$O: Y
+**
+
+&$T: IDENT
+&$Q: What letter in the date() format represents minutes with leading zeros?
+&$O: i
+**
+
+&$T: MC
+&$Q: What does date_create() return?
+&$O: A string
+&$O: A number
+&$O: *A DateTime object
+&$O: A Boolean value
+**
+
+&$T: MC
+&$Q: What is a user-defined function?
+&$O: A built-in PHP command
+&$O: *A function created by the programmer
+&$O: A database function
+&$O: A system error
+**
+
+&$T: MC
+&$Q: Which keyword is used to define a function in PHP?
+&$O: define
+&$O: func
+&$O: *function
+&$O: method
+**
+
+&$T: MC
+&$Q: What does the include statement do in PHP?
+&$O: Deletes a file
+&$O: *Loads the contents of another file into the script
+&$O: Compiles PHP
+&$O: Stops execution
+**
+
+&$T: MC
+&$Q: What is the difference between include and require?
+&$O: Include stops execution if file is missing
+&$O: *Require stops execution if file is missing
+&$O: Include creates variables
+&$O: Require deletes files
+**
