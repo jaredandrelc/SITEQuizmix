@@ -1,0 +1,152 @@
+&$NAME: Module 3 Quiz: Combinational Logic Circuits
+&$COURSE: IT2623 CArch
+&$DESC: Covers combinational logic circuits, adders, subtractors, comparators, decoders, and encoders.
+&$SETTING: show_answers=true
+**
+&$T: MC
+&$Q: What type of logic circuit has outputs that are determined solely by the current combination of active inputs?
+&$O: Sequential Logic Circuit
+&$O: *Combinational Logic Circuit
+&$O: Integrated Circuit
+&$O: Memory Circuit
+**
+&$T: IDENT
+&$Q: What type of logic circuit has outputs that depend on both the input and the state of the memory elements?
+&$O: Sequential Logic Circuit
+&$O: Sequential
+&$O: Sequential Circuit
+**
+&$T: BLOCK
+&$Q: Reorder to form the very first step in making a combinational logic circuit:
+&$O: Read and understand the problem
+**
+&$T: MC
+&$Q: During the design of a combinational circuit, what is used to show the relationship between inputs and outputs?
+&$O: Block diagram
+&$O: Boolean function
+&$O: *Truth table
+&$O: Logic gate implementation
+**
+&$T: IDENT
+&$Q: After expressing each output as a function of the input, what must you determine before implementing the logic gates?
+&$O: Simplified Boolean function
+&$O: Simplified function
+&$O: Boolean function
+**
+&$T: MATCH
+&$Q: Match the practical logic circuit design goal with its description.
+&$O: Minimum number of gates | Reduces overall component count
+&$O: Minimum propagation time | Increases the speed of the signal through the circuit
+&$O: Minimum interconnections | Simplifies the wiring between components
+&$O: Fan-out limitations | Accounts for the driving capabilities of each gate
+**
+&$T: MC
+&$Q: Which of the following is considered one of the "5 MUSTS" when defining a practical logic circuit design?
+&$O: Maximum number of inputs to a gate
+&$O: Maximum propagation time
+&$O: *Minimum number of interconnections
+&$O: Maximum number of gates
+**
+&$T: IDENT
+&$Q: A half adder accepts two binary digits and produces two outputs: a sum bit and a ______ bit.
+&$O: carry out
+&$O: carry
+&$O: Cout
+**
+&$T: MC
+&$Q: How many total input bits does a full adder accept?
+&$O: Two
+&$O: *Three
+&$O: Four
+&$O: Six
+**
+&$T: MC
+&$Q: A full adder can be implemented by combining two half-adders and what type of logic gate?
+&$O: AND gate
+&$O: NAND gate
+&$O: *OR gate
+&$O: XOR gate
+**
+&$T: BLOCK
+&$Q: Reorder to explain how binary subtraction is accomplished:
+&$O: taking the complement of the subtrahend and adding it to the minuend
+**
+&$T: MATCH
+&$Q: Match the subtractor type to its exact characteristics.
+&$O: Half Subtractor | Subtracts two bits and produces a difference and borrow bit
+&$O: Full Subtractor | Subtracts three bits leading to three inputs with two outputs
+**
+&$T: IDENT
+&$Q: A half subtractor produces a difference bit and a ______ bit.
+&$O: borrow
+&$O: borrow bit
+**
+&$T: MC
+&$Q: A magnitude comparator determines relative magnitudes using how many outputs?
+&$O: Two
+&$O: *Three
+&$O: Four
+&$O: Five
+**
+&$T: IDENT
+&$Q: The three outputs of a magnitude comparator represent greater than, less than, or ______.
+&$O: equal to
+&$O: equal
+**
+&$T: MC
+&$Q: A decoder is a combinational circuit that converts binary information from 'n' input lines to a maximum of how many unique output lines?
+&$O: n
+&$O: 2n
+&$O: *2^n
+&$O: n^2
+**
+&$T: MC
+&$Q: In a 2x4 decoder, if 'n' is the number of inputs, what does the '4' represent?
+&$O: The number of logic gates
+&$O: *The maximum number of unique output lines
+&$O: The propagation delay
+&$O: The input variables
+**
+&$T: IDENT
+&$Q: If the n-bit decoded information has unused or don't care combinations, the decoder output will have ______ lines than 2^n.
+&$O: fewer
+&$O: less
+**
+&$T: MC
+&$Q: Which combinational circuit performs the reverse process of a decoder?
+&$O: Multiplexer
+&$O: *Encoder
+&$O: Magnitude Comparator
+&$O: Full Adder
+**
+&$T: MATCH
+&$Q: Match the encoder properties assuming 'n' is the number of output lines.
+&$O: Number of output lines | n
+&$O: Number of input lines (m) | 2^n
+**
+&$T: MC
+&$Q: For an 8x3 Encoder, how many input lines are there?
+&$O: 3
+&$O: *8
+&$O: 11
+&$O: 24
+**
+&$T: MC
+&$Q: Based on the standard 8x3 Encoder boolean output functions, what is the expression for output X?
+&$O: D1 + D3 + D5 + D7
+&$O: D2 + D3 + D6 + D7
+&$O: *D4 + D5 + D6 + D7
+&$O: D1 + D2 + D3 + D4
+**
+&$T: IDENT
+&$Q: Based on the 8x3 Encoder Boolean Output Functions, the expression for Z is D1 + D3 + D5 + _____.
+&$O: D7
+**
+&$T: IDENT
+&$Q: Based on the 8x3 Encoder Boolean Output Functions, the expression for Y is D2 + D3 + _____ + D7.
+&$O: D6
+**
+&$T: BLOCK
+&$Q: Reorder the sentence defining an encoder's primary function:
+&$O: It generates the binary code corresponding to the input value
+**

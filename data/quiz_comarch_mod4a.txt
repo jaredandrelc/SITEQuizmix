@@ -1,0 +1,67 @@
+&$NAME: Module 4 Quiz: Sequential Circuits
+&$COURSE: IT2623 CArch
+&$DESC: Covers sequential circuits, clocking mechanisms, and flip-flops.
+&$SETTING: show_answers=true
+**
+&$T: MC
+&$Q: What type of circuit consists of a combinational circuit connected to memory elements to form a feedback path?
+&$O: *Sequential Circuit
+&$O: Synchronous Circuit
+&$O: Sequence Recognizer
+&$O: Integrated Circuit
+**
+&$T: IDENT
+&$Q: In what specific type of sequential circuit do clock pulses dictate when changes occur in storage elements and outputs?
+&$O: Synchronous Sequential Circuit
+&$O: Synchronous Circuit
+&$O: Synchronous
+**
+&$T: BLOCK
+&$Q: Reorder the sentence to define the basic function of a flip-flop:
+&$O: A device with two stable states that can maintain a binary state indefinitely
+**
+&$T: MATCH
+&$Q: Match the sequential circuit concept with its correct definition.
+&$O: Excitation Table | Lists required input combinations to achieve a specific change of state
+&$O: State Equation | Expression specifying conditions for a flip-flop's next state transition
+&$O: Sequence Recognizer | Specialized sequential circuit that detects a specific bit pattern
+**
+&$T: IDENT
+&$Q: A State Equation is also known by another name. What is it?
+&$O: Characteristic Equation
+&$O: Characteristic
+**
+&$T: MATCH
+&$Q: Match the specific form of clocking or triggering to its behavior.
+&$O: Positive Level | Responds during the high level of the clock signal
+&$O: Negative Level | Responds during the low level of the clock signal
+&$O: Positive Edge | Triggered by the rising transition edge
+&$O: Negative Edge | Triggered by the falling transition edge
+**
+&$T: MC
+&$Q: What is the primary advantage of using JK Flip-Flops in a logic circuit design?
+&$O: They only have one input, making wiring easier.
+&$O: They require slightly less hardware to implement than other flip-flops.
+&$O: *They often result in many "don't care" conditions, leading to simpler simplified equations.
+&$O: They completely eliminate the need for an excitation table.
+**
+&$T: IDENT
+&$Q: D Flip-Flops are commonly used because they only have one input and require no complex excitation tables. For a D Flip-Flop, the input D is equal to what?
+&$O: Next State
+**
+&$T: MC
+&$Q: Even though their input equations might be more complex than JK flip-flops, why are D Flip-Flops the most commonly used in practice?
+&$O: They generate more "don't care" conditions.
+&$O: *They require slightly less hardware to implement.
+&$O: They are the only flip-flops that support edge triggering.
+&$O: They do not require a clock pulse to operate.
+**
+&$T: CHECK
+&$Q: Which of the following are the required steps in defining a sequential logic circuit? (Select all that apply)
+&$O: *Construct the state table.
+&$O: *Construct the excitation table.
+&$O: *Derive the simplified Boolean equations.
+&$O: *Draw the logic circuit.
+&$O: Calculate the propagation time of the signal.
+&$O: Limit the fan-out of the gates.
+**

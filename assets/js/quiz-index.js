@@ -5,6 +5,8 @@ const QUIZ_INDEX = [
     { url: 'data/quiz_ccna2_mod4.txt', syscat: 'Cisco Topic Quiz' },
     { url: 'data/quiz_comarch_mod1a.txt', syscat: 'Short Quiz' },
     { url: 'data/quiz_comarch_mod2a.txt', syscat: 'Short Quiz' },
+    { url: 'data/quiz_comarch_mod3a.txt', syscat: 'Short Quiz' },
+    { url: 'data/quiz_comarch_mod4a.txt', syscat: 'Short Quiz' },
     { url: 'data/quiz_backend_mod1.txt', syscat: 'Short Quiz' },
     { url: 'data/quiz_backend_mod2.txt', syscat: 'Short Quiz' },
     { url: 'data/quiz_backend_mod3.txt', syscat: 'Short Quiz' },
