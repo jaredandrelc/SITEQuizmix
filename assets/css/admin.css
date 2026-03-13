@@ -1,0 +1,214 @@
+/* Admin Specific Styles */
+.admin-body {
+    background: var(--background);
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    color: var(--text);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-top: 4px solid var(--primary);
+}
+
+.login-content {
+    background: var(--surface);
+    padding: 30px;
+    border-radius: var(--radius);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.admin-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+textarea.admin-input {
+    resize: vertical;
+}
+
+.admin-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.error-msg {
+    color: var(--danger);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.admin-app-container {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.compact {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.admin-workspace {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.admin-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: var(--background);
+    overflow-y: auto;
+}
+
+.pane-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.pane-header h3 {
+    margin: 0;
+    color: var(--primary);
+}
+
+.json-textarea {
+    flex: 1;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Consolas', 'Courier New', monospace;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius);
+    padding: 15px;
+    font-size: 0.9rem;
+    resize: none;
+    white-space: pre;
+    overflow: auto;
+}
+
+.json-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.pane-divider {
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: col-resize;
+}
+
+.gui-workspace {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gui-section {
+    background: var(--surface);
+    padding: 20px;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.gui-section h4 {
+    margin: 0 0 10px 0;
+    color: var(--accent);
+}
+
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.gui-question-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.gui-question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-question-btn {
+    background: none;
+    border: none;
+    color: var(--danger);
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.remove-question-btn:hover {
+    background: rgba(255, 51, 85, 0.1);
+}
+
+.gui-answers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+    padding-left: 15px;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.gui-answer-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.gui-answer-row input[type="text"] {
+    flex: 1;
+}
+
+.is-correct-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

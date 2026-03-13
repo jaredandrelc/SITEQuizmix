@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizmix Admin</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"
+        rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+</head>
+
+<body class="admin-body">
+
+    <!-- LOGIN OVERLAY -->
+    <div id="admin-login-overlay" class="modal-overlay">
+        <div class="modal-content login-content">
+            <h2 style="margin-bottom: 20px;">Admin Login</h2>
+            <div style="margin-bottom: 15px;">
+                <input type="email" id="admin-email" class="admin-input" placeholder="Email (@ust.edu.ph)" required
+                    autocomplete="email">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <input type="password" id="admin-password" class="admin-input" placeholder="Password" required
+                    autocomplete="current-password">
+            </div>
+            <p id="login-error" class="error-msg hidden"></p>
+            <button id="admin-login-btn" class="primary-btn" style="width: 100%;">Login</button>
+        </div>
+    </div>
+
+    <div class="app-container admin-app-container hidden" id="admin-container">
+
+        <!-- HEADER -->
+        <header class="top-bar">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html"
+                        style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                        <img src="assets/images/logo.svg" alt="Quizmix Logo">
+                        <span>Quizmix Admin</span>
+                    </a>
+                </div>
+                <div class="admin-header-actions">
+                    <button id="admin-upload-btn" class="primary-btn compact">
+                        <span class="material-symbols-rounded">upload_file</span> Load JSON
+                    </button>
+                    <input type="file" id="json-upload-input" accept=".json" class="hidden">
+                    <button id="admin-export-btn" class="primary-btn compact">
+                        <span class="material-symbols-rounded">download</span> Export JSON
+                    </button>
+                    <button id="admin-account-btn" class="secondary-btn compact" disabled
+                        title="Account Controls (Coming Soon!)">
+                        <span class="material-symbols-rounded">account_circle</span> Account
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- SPLIT PANE EDITOR -->
+        <section class="admin-workspace">
+            <!-- TEXT EDITOR PANE -->
+            <div class="admin-pane text-editor-pane">
+                <div class="pane-header">
+                    <h3>Raw JSON Editor</h3>
+                    <button id="sync-to-gui-btn" class="secondary-btn compact">Sync to GUI ➤</button>
+                </div>
+                <textarea id="json-editor-area" class="json-textarea" spellcheck="false"></textarea>
+            </div>
+
+            <div class="pane-divider"></div>
+
+            <!-- GUI EDITOR PANE -->
+            <div class="admin-pane gui-editor-pane">
+                <div class="pane-header">
+                    <h3>Visual Editor</h3>
+                    <button id="sync-to-json-btn" class="secondary-btn compact">◂ Sync to JSON</button>
+                </div>
+                <div class="gui-workspace">
+                    <div class="gui-section">
+                        <h4>Quiz Meta</h4>
+                        <input type="text" id="gui-quiz-title" class="admin-input" placeholder="Quiz Title">
+                        <input type="text" id="gui-quiz-course" class="admin-input"
+                            placeholder="Course ID (e.g., CCNA1)">
+                        <textarea id="gui-quiz-desc" class="admin-input" placeholder="Description" rows="2"></textarea>
+                    </div>
+
+                    <div class="gui-section">
+                        <div class="flex-header">
+                            <h4>Questions</h4>
+                            <button id="add-question-btn" class="primary-btn compact">+ Add Question</button>
+                        </div>
+                        <div id="gui-questions-list" class="questions-list">
+                            <!-- Question cards injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="assets/js/admin.js"></script>
+</body>
+
+</html>
